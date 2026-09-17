@@ -3,3 +3,8 @@ Theme Name: Vitahealthmedia
 Author: CMD-Design
 Version: 1.0
 */
+
+body {
+  color: var(--color-text-default);
+  background: var(--color-background-default);
+}
