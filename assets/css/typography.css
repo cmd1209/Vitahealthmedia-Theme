@@ -1,0 +1,180 @@
+/* Explicit regular face from Google Fonts; alias avoids family-name conflicts. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+@font-face {
+  font-family: "Vita DM Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/dmserifdisplay/v17/-nFnOHM81r4j6k0gjAW3mujVU2B2K_c.ttf") format("truetype");
+}
+
+/* Base */
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-default);
+}
+
+/* Display */
+
+.display-xl {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-7xl);
+  line-height: var(--line-height-7xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-large {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-6xl);
+  line-height: var(--line-height-6xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-default {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-5xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.display-highlight {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-4xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Headings */
+
+.h1 {
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-5xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.h2 {
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-3xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.h3 {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-3xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.h4 {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.h5 {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.h6 {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-2xl);
+  font-weight: var(--font-weight-regular);
+}
+
+.quote-large {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-4xl);
+  font-weight: var(--font-weight-regular);
+}
+
+.quote-xl {
+  font-family: var(--font-serif);
+  font-style: normal;
+  font-size: var(--font-size-6xl);
+  line-height: var(--line-height-6xl);
+  font-weight: var(--font-weight-regular);
+}
+
+@media (max-width: 768px) {
+  .quote-xl {
+    font-size: var(--font-size-4xl);   /* 40px */
+    line-height: var(--line-height-4xl); /* 48px */
+  }
+}
+
+.quote-mobile {
+  font-family: var(--font-serif);
+  font-style: normal; 
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-4xl);
+}
+
+/* Body */
+
+.body-large {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-default {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-small {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.body-bold {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Lead */
+
+.lead {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Eyebrow */
+
+.eyebrow {
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* Labels */
+
+.label {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.label-small {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  font-weight: var(--font-weight-medium);
+}
