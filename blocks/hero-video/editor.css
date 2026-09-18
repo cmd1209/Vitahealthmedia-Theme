@@ -1,0 +1,21 @@
+.editor-styles-wrapper .wp-block-vita-health-hero-video {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin-inline: 0;
+  overflow: visible;
+}
+
+.editor-styles-wrapper .hero-video__inner {
+  width: calc(100% - 2 * var(--padding-lg));
+  max-width: var(--content-default);
+  margin-inline: auto;
+}
+
+.editor-styles-wrapper .hero-video__buttons > .block-editor-inner-blocks { width: 100%; }
+.editor-styles-wrapper .hero-video__editor-media {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+}

@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/inc/button-block.php';
+require_once get_template_directory() . '/inc/hero-video.php';
 
 function vita_health_register_menus() {
     register_nav_menu('primary', __('Primary Navigation', 'vitahealthmedia'));
@@ -71,6 +72,20 @@ function vita_health_enqueue_assets() {
         get_stylesheet_uri(),
         ['vita-health-components'],
         $theme_version
+    );
+
+    wp_enqueue_style(
+        'vita-health-hero-video',
+        get_template_directory_uri() . '/assets/css/components/hero-video.css',
+        ['vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
+        filemtime(get_template_directory() . '/assets/css/components/hero-video.css')
+    );
+    wp_enqueue_script(
+        'vita-health-hero-video',
+        get_template_directory_uri() . '/assets/js/hero-video.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/hero-video.js'),
+        true
     );
 
     wp_enqueue_script(

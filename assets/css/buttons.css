@@ -68,6 +68,19 @@
   --vita-button-line-height: var(--line-height-xs);
 }
 
+/* Opt-in responsive size for template buttons. */
+@media (max-width: 768px) {
+  .button--small-mobile,
+  .hero-video .wp-block-button .button,
+  .editor-styles-wrapper .hero-video .vita-button-editor {
+    --vita-button-radius: var(--radius-pill);
+    --vita-button-padding-x: var(--padding-md);
+    --vita-button-padding-y: var(--padding-xs);
+    --vita-button-font-size: var(--font-size-xs);
+    --vita-button-line-height: var(--line-height-xs);
+  }
+}
+
 /* Keep formatted text inline unless the frontend has a separate icon/text pair. */
 .wp-block-button .wp-block-button__link.button,
 .vita-button-editor .wp-block-button__link { display: inline-block; }

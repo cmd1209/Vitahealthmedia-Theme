@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/hero-video",
+  "version": "1.0.0",
+  "title": "Hero Video",
+  "category": "design",
+  "icon": "format-video",
+  "description": "Full-width video hero with headline, buttons and controlled gradient overlay.",
+  "textdomain": "vitahealthmedia",
+  "attributes": {
+    "headline": {
+      "type": "string",
+      "default": "Wir wollen das Leben der Menschen verbessern, indem wir ihnen helfen, ihre <em>Gesundheit</em> besser zu verstehen."
+    },
+    "videoId": { "type": "number", "default": 0 },
+    "gradient": {
+      "type": "string",
+      "enum": ["purple-green", "green-purple", "dark-green", "none"],
+      "default": "purple-green"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": false,
+    "customClassName": false
+  },
+  "editorScript": "vita-health-hero-video-editor",
+  "editorStyle": "file:./editor.css",
+  "style": "vita-health-hero-video",
+  "render": "file:./render.php"
+}
