@@ -1,0 +1,89 @@
+/* Buttons and decorative icons */
+:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  padding: var(--vita-button-padding-y, var(--button-padding-y)) var(--vita-button-padding-x, var(--button-padding-x));
+  border: 0;
+  border-radius: var(--vita-button-radius, var(--button-radius-tl) var(--button-radius-tr) var(--button-radius-br) var(--button-radius-bl));
+  background: var(--vita-button-background, var(--color-action-primary-background));
+  color: var(--vita-button-label, var(--color-action-primary-label));
+  font-family: inherit;
+  font-size: var(--vita-button-font-size, var(--button-font-size));
+  font-weight: var(--button-font-weight);
+  line-height: var(--vita-button-line-height, var(--button-line-height));
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):hover { background: var(--vita-button-hover, var(--color-action-primary-hover)); }
+:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):focus-visible { outline: 3px solid var(--color-border-focus); outline-offset: 4px; }
+
+.button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.button__icon svg {
+  width: 1em;
+  height: 1em;
+  stroke-width: 2;
+}
+
+/* Shared modifiers: editor wrappers and frontend links use the same tokens. */
+.button--primary {
+  --vita-button-background: var(--color-action-primary-background);
+  --vita-button-label: var(--color-action-primary-label);
+  --vita-button-hover: var(--color-action-primary-hover);
+}
+
+.button--secondary {
+  --vita-button-background: var(--color-action-secondary-background);
+  --vita-button-label: var(--color-action-secondary-label);
+  --vita-button-hover: var(--color-action-secondary-hover);
+}
+
+.button--highlight {
+  --vita-button-background: var(--color-action-highlight-background);
+  --vita-button-label: var(--color-action-highlight-label);
+  --vita-button-hover: var(--color-action-highlight-hover);
+}
+
+.button--default {
+  --vita-button-padding-x: var(--button-padding-x);
+  --vita-button-padding-y: var(--button-padding-y);
+  --vita-button-font-size: var(--button-font-size);
+  --vita-button-line-height: var(--button-line-height);
+  --vita-button-radius: var(--button-radius-tl) var(--button-radius-tr) var(--button-radius-br) var(--button-radius-bl);
+}
+
+.button--small {
+  --vita-button-radius: var(--radius-pill);
+  --vita-button-padding-x: var(--padding-md);
+  --vita-button-padding-y: var(--padding-xs);
+  --vita-button-font-size: var(--font-size-xs);
+  --vita-button-line-height: var(--line-height-xs);
+}
+
+/* Keep formatted text inline unless the frontend has a separate icon/text pair. */
+.wp-block-button .wp-block-button__link.button,
+.vita-button-editor .wp-block-button__link { display: inline-block; }
+.wp-block-button .wp-block-button__link.button--has-icon { display: inline-flex; }
+.button__text { min-width: 0; }
+
+/* Editor-only Lucide preview: no extra nodes in the editable button text. */
+.vita-button-icon-left .wp-block-button__link::before,
+.vita-button-icon-right .wp-block-button__link::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background: currentColor;
+  mask: var(--vita-button-icon) center / contain no-repeat;
+}
+.vita-button-icon-left .wp-block-button__link::before { margin-inline-end: var(--button-gap); }
+.vita-button-icon-right .wp-block-button__link::after { margin-inline-start: var(--button-gap); }
