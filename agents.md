@@ -84,3 +84,7 @@ Expected location:
 
 ```text
 wp-content/themes/vita-health/
+
+## theme Figma Layout: https://www.figma.com/design/rcmTi7j9XxjcgfZCR3HCAN/Vita-Health-Wordpress?node-id=1384-6610&t=OdgpvvR0BBM3GR0B-1
+
+## theme prototype: https://vita-health-prieview.vercel.app/

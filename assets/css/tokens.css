@@ -191,7 +191,7 @@
   
  --color-background-default-T85: color-mix(
   in srgb,
-  var(--color-brand-light-500) 85%,
+  var(--color-brand-light-500) 93%,
   transparent
 );
 

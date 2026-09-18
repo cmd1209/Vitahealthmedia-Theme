@@ -6,6 +6,15 @@ function vita_health_register_menus() {
 
 add_action('after_setup_theme', 'vita_health_register_menus');
 
+function vita_health_navigation_classes($classes, $item, $args) {
+    if ($args->theme_location === 'primary' && trim($item->title) === 'Kontakt') {
+        $classes[] = 'navigation__contact';
+    }
+    return $classes;
+}
+
+add_filter('nav_menu_css_class', 'vita_health_navigation_classes', 10, 3);
+
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
 
@@ -42,6 +51,14 @@ function vita_health_enqueue_assets() {
         get_stylesheet_uri(),
         ['vita-health-components'],
         $theme_version
+    );
+
+    wp_enqueue_script(
+        'vita-health-navigation',
+        get_template_directory_uri() . '/assets/js/navigation.js',
+        [],
+        $theme_version,
+        true
     );
 }
 

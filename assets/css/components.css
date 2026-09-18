@@ -1,0 +1,136 @@
+/* Primary navigation */
+.navigation {
+  --navigation-top: 0px;
+  position: sticky;
+  top: var(--navigation-top);
+  z-index: 100;
+  padding: 18px var(--page-padding-desktop);
+  background: var(--color-background-default-T85);
+}
+
+.admin-bar .navigation { --navigation-top: 32px; }
+
+.navigation__wrapper {
+  max-width: var(--content-default);
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-lg);
+}
+
+.navigation__logo { display: block; flex-shrink: 0; }
+.navigation__logo img { display: block; }
+.navigation__logo .navigation__logo--small { display: none; }
+.navigation.is-sticky .navigation__logo--large { display: none; }
+.navigation.is-sticky .navigation__logo--small { display: block; width: 99px; height: 47px; }
+
+.navigation__links {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navigation__links a {
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--padding-xxs);
+  color: var(--color-text-default);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-sm);
+  text-decoration: none;
+}
+
+.navigation__links a:hover,
+.navigation__links a[aria-current="page"] { text-decoration: underline; text-underline-offset: 5px; }
+
+.navigation a:focus-visible,
+.navigation button:focus-visible { outline: 3px solid var(--color-border-focus); outline-offset: 5px; }
+
+.navigation__contact a {
+  gap: var(--button-gap);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--radius-pill);
+  background: var(--color-action-secondary-background);
+  color: var(--color-action-secondary-label);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  white-space: nowrap;
+}
+
+.navigation__contact a::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: url('../images/icon-send.svg') center / contain no-repeat;
+}
+
+.navigation__contact a:hover { background: var(--color-action-secondary-hover); }
+.navigation__toggle { display: none; }
+
+@media (max-width: 960px) {
+  .navigation { padding: var(--padding-xs) var(--page-padding-mobile); }
+  .navigation__wrapper { align-items: center; flex-wrap: wrap; }
+  .navigation__logo .navigation__logo--large { display: none; }
+  .navigation__logo .navigation__logo--small { display: block; width: 75px; height: 36px; }
+  .navigation__panel { width: 100%; }
+  .navigation__links { flex-direction: column; gap: var(--gap-md); }
+  .navigation__links a { font-size: var(--font-size-2xl); line-height: var(--line-height-2xl); }
+  .navigation__contact a { font-size: var(--font-size-md); line-height: var(--line-height-md); }
+
+  .navigation.is-enhanced .navigation__toggle {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-brand);
+    cursor: pointer;
+  }
+
+  .navigation__toggle span {
+    position: absolute;
+    left: 10px;
+    top: 21px;
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+  .navigation__toggle span:first-child { transform: translateY(-7px); }
+  .navigation__toggle span:last-child { transform: translateY(7px); }
+  .is-open .navigation__toggle span:first-child { transform: rotate(45deg); }
+  .is-open .navigation__toggle span:nth-child(2) { opacity: 0; }
+  .is-open .navigation__toggle span:last-child { transform: rotate(-45deg); }
+
+  .navigation.is-enhanced .navigation__panel { display: none; }
+  .navigation.is-open .navigation__panel {
+    position: fixed;
+    inset: var(--navigation-top) 0 0;
+    display: flex;
+    box-sizing: border-box;
+    padding: 88px var(--page-padding-mobile) var(--padding-xl);
+    overflow-y: auto;
+    background: var(--color-background-default);
+  }
+  .navigation.is-open .navigation__links { margin: auto; }
+  .navigation.is-open .navigation__logo { position: relative; z-index: 2; }
+  html.navigation-open { overflow: hidden; }
+}
+
+@media (max-width: 782px) {
+  .admin-bar .navigation { --navigation-top: 46px; }
+}
+@media (max-width: 600px) {
+  .admin-bar .navigation.is-sticky { --navigation-top: 0px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navigation__toggle span { transition: none; }
+}
