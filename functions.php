@@ -2,6 +2,8 @@
 
 function vita_health_register_menus() {
     register_nav_menu('primary', __('Primary Navigation', 'vitahealthmedia'));
+    register_nav_menu('footer-services', __('Footer Services', 'vitahealthmedia'));
+    register_nav_menu('footer-links', __('Footer Links', 'vitahealthmedia'));
 }
 
 add_action('after_setup_theme', 'vita_health_register_menus');
@@ -14,6 +16,15 @@ function vita_health_navigation_classes($classes, $item, $args) {
 }
 
 add_filter('nav_menu_css_class', 'vita_health_navigation_classes', 10, 3);
+
+function vita_health_footer_link_attributes($attributes, $item, $args) {
+    if ($args->theme_location === 'footer-services' && isset($attributes['href']) && strpos($attributes['href'], '#') === 0) {
+        $attributes['href'] = home_url('/') . $attributes['href'];
+    }
+    return $attributes;
+}
+
+add_filter('nav_menu_link_attributes', 'vita_health_footer_link_attributes', 10, 3);
 
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');

@@ -134,3 +134,94 @@
 @media (prefers-reduced-motion: reduce) {
   .navigation__toggle span { transition: none; }
 }
+
+/* Footer */
+.footer {
+  padding-block: var(--padding-md);
+  background: var(--color-background-brand);
+  color: var(--color-text-inverse);
+}
+
+.footer__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+}
+
+.footer__content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+
+.footer__address {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  min-width: 0;
+}
+
+.footer__logo {
+  display: block;
+  width: 106px;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer__address address {
+  font-style: normal;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+}
+
+.footer__menus {
+  display: flex;
+  gap: var(--gap-3xl);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--gap-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+}
+
+.footer__links a {
+  color: inherit;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+
+.footer__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.footer__links a:focus-visible { outline: 3px solid var(--color-border-focus); outline-offset: 4px; }
+
+.footer__copyright {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-sm);
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .footer__address { gap: var(--gap-md); }
+  .footer__logo { width: 84px; height: 40px; }
+  .footer__address address { font-size: var(--font-size-xs); line-height: var(--line-height-sm); }
+  .footer__menus { gap: var(--gap-xl); }
+  .footer__links a { font-size: var(--font-size-xs); line-height: var(--line-height-xs); }
+}
+
+@media (max-width: 600px) {
+  .footer__wrapper { width: calc(100% - 2 * var(--padding-lg)); }
+  .footer__content { flex-direction: column; align-items: stretch; }
+  .footer__menus { order: -1; flex-direction: column; gap: var(--gap-md); }
+  .footer__links { flex-direction: row; flex-wrap: wrap; align-items: baseline; text-align: left; }
+  .footer__copyright { text-align: left; }
+}
