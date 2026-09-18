@@ -42,3 +42,46 @@ Example:
   --space-md: 1.5rem;
   --radius-sm: 0.5rem;
 }
+```
+
+## Gutenberg buttons
+
+Insert a normal Button block inside Buttons, select the individual button, and open
+**Vita Button** in its block sidebar. Choose Primary, Secondary or Highlight;
+Default or Small; and optionally enable the chevron on the left or right.
+
+The attributes are registered in `inc/button-block.php` and passed to the editor
+by WordPress. `assets/js/editor/button-controls.js` uses WordPress browser globals
+without JSX or a build step. The native Button save function is unchanged: Vita
+classes and decorative icon markup are added by `render_block_core/button` only
+when rendering. Existing buttons default to Primary / Default / No icon.
+
+`assets/css/buttons.css` is shared by template buttons and Gutenberg. Existing
+explicit WordPress color, gradient and typography settings can override the Vita
+defaults. The editor icon preview uses SVG data from the same local Lucide build;
+the frontend uses the existing `icons.js` initializer. No extra initialization or
+icon files are needed.
+
+### Verification
+
+On a draft page, add five normal Button blocks with descriptive text:
+
+| Variant | Size | Icon |
+| --- | --- | --- |
+| Primary | Default | None |
+| Primary | Default | Right |
+| Secondary | Small | None |
+| Secondary | Small | Right |
+| Highlight | Default | Left |
+
+Save, reload the editor, and preview the page. Check that the controls retain their
+values, there are no invalid-block warnings, and the styles and icon positions
+match. Test bold text, a link with a new-tab target, and an existing Button block.
+Disabling Show icon should remove the icon, icon selector and position control. Native
+button text remains the accessible label; frontend icon wrappers are aria-hidden.
+
+When Show icon is enabled, the Icon dropdown offers Chevron right (the default),
+Arrow right, Arrow up right, External link, Download, Mail, Send, Play, Plus and
+Check. The choice is saved in `vitaIconName` and used by both the editor preview
+and frontend. To extend the list, add a valid Lucide name to the dropdown options
+in `assets/js/editor/button-controls.js`.

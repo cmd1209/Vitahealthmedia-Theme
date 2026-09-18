@@ -1,5 +1,7 @@
 <?php
 
+require_once get_template_directory() . '/inc/button-block.php';
+
 function vita_health_register_menus() {
     register_nav_menu('primary', __('Primary Navigation', 'vitahealthmedia'));
     register_nav_menu('footer-services', __('Footer Services', 'vitahealthmedia'));
@@ -51,9 +53,16 @@ function vita_health_enqueue_assets() {
     );
 
     wp_enqueue_style(
+        'vita-health-buttons',
+        get_template_directory_uri() . '/assets/css/buttons.css',
+        ['vita-health-tokens'],
+        filemtime(get_template_directory() . '/assets/css/buttons.css')
+    );
+
+    wp_enqueue_style(
         'vita-health-components',
         get_template_directory_uri() . '/assets/css/components.css',
-        ['vita-health-tokens', 'vita-health-base', 'vita-health-typography'],
+        ['vita-health-tokens', 'vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
         $theme_version
     );
 
@@ -69,6 +78,22 @@ function vita_health_enqueue_assets() {
         get_template_directory_uri() . '/assets/js/navigation.js',
         [],
         $theme_version,
+        true
+    );
+
+    wp_enqueue_script(
+        'vita-health-lucide',
+        get_template_directory_uri() . '/assets/js/vendor/lucide.min.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/vendor/lucide.min.js'),
+        true
+    );
+
+    wp_enqueue_script(
+        'vita-health-icons',
+        get_template_directory_uri() . '/assets/js/icons.js',
+        ['vita-health-lucide'],
+        filemtime(get_template_directory() . '/assets/js/icons.js'),
         true
     );
 }
