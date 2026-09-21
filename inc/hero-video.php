@@ -41,11 +41,3 @@ function vita_health_register_hero_video_block() {
     register_block_type(get_template_directory() . '/blocks/hero-video');
 }
 add_action('init', 'vita_health_register_hero_video_block');
-
-function vita_health_hero_editor_styles() {
-    if (is_admin()) {
-        // Reuse the existing type scale in the block canvas; no editor-only type system.
-        wp_enqueue_style('vita-health-typography', get_template_directory_uri() . '/assets/css/typography.css', ['vita-health-tokens'], filemtime(get_template_directory() . '/assets/css/typography.css'));
-    }
-}
-add_action('enqueue_block_assets', 'vita_health_hero_editor_styles');

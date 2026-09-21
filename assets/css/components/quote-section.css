@@ -1,0 +1,99 @@
+.quote-section {
+  position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 847px; /* Desktop Figma frame; grows with edited content. */
+  padding-block: var(--padding-xl);
+  overflow: hidden;
+  background: var(--color-background-highlight);
+  color: var(--color-text-brand);
+  text-align: left;
+}
+
+.quote-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: calc(50% - 649.5px); /* 97px from the left of the 1493px Figma frame. */
+  width: 776px;
+  height: 847px;
+  background: url("../../images/quote-v.svg") no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+
+/* Classic themes receive an extra native Group wrapper on the frontend. */
+.quote-section .wp-block-group__inner-container { display: contents; }
+
+.quote-section .quote-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-3xl);
+  max-width: var(--content-medium);
+  width: 100%;
+  margin: 0;
+}
+
+.quote-section .quote-section__quote {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+  color: inherit;
+  quotes: none;
+}
+
+.quote-section__quote::before,
+.quote-section__quote::after { content: none; }
+
+.quote-section__quote > p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+
+.quote-section .quote-section__signature {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  margin: 0;
+  font-family: var(--font-sans);
+  font-style: normal;
+  color: var(--color-text-default);
+}
+
+.quote-section__signature p {
+  margin: 0;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+
+/* Keep viewport breakouts inside the Gutenberg canvas. */
+.editor-styles-wrapper .quote-section.alignfull {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+@media (max-width: 768px) {
+  .quote-section { min-height: 477px; }
+
+  .quote-section::before {
+    left: 0;
+    width: 419px;
+    height: 458px;
+  }
+
+  .quote-section .quote-section__inner {
+    width: calc(100% - 2 * var(--padding-lg));
+  }
+
+
+  .quote-section .quote-section__signature { gap: var(--gap-xxs); }
+}

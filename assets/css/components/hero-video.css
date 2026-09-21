@@ -1,14 +1,9 @@
-/* Clip only horizontal viewport-unit overspill; do not create a scroll container. */
-body:not(.wp-admin):has(.hero-video) { overflow-x: clip; }
-
 .hero-video {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: flex-end;
   box-sizing: border-box;
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
   min-height: 70vh;
   padding-block: var(--padding-3xl);
   overflow: hidden;

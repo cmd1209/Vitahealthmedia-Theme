@@ -9,7 +9,7 @@
   border-radius: var(--vita-button-radius, var(--button-radius-tl) var(--button-radius-tr) var(--button-radius-br) var(--button-radius-bl));
   background: var(--vita-button-background, var(--color-action-primary-background));
   color: var(--vita-button-label, var(--color-action-primary-label));
-  font-family: inherit;
+  font-family: var(--font-sans);
   font-size: var(--vita-button-font-size, var(--button-font-size));
   font-weight: var(--button-font-weight);
   line-height: var(--vita-button-line-height, var(--button-line-height));

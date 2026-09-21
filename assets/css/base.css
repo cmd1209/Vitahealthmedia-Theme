@@ -2,6 +2,16 @@ body {
   margin: 0;
 }
 
+/* Shared viewport breakout for full-width theme sections. */
+body:not(.wp-admin):has(.hero-video, .quote-section, .leistung-section) { overflow-x: clip; }
+
+.hero-video,
+.quote-section.alignfull,
+.leistung-section.alignfull {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
 .content-wrapper {
   width: calc(100% - 2 * var(--page-padding-desktop));
   max-width: var(--content-default);

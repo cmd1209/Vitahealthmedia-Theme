@@ -2,6 +2,8 @@
 
 require_once get_template_directory() . '/inc/button-block.php';
 require_once get_template_directory() . '/inc/hero-video.php';
+require_once get_template_directory() . '/inc/patterns.php';
+require_once get_template_directory() . '/inc/typography.php';
 
 function vita_health_register_menus() {
     register_nav_menu('primary', __('Primary Navigation', 'vitahealthmedia'));
@@ -43,14 +45,14 @@ function vita_health_enqueue_assets() {
         'vita-health-base',
         get_template_directory_uri() . '/assets/css/base.css',
         ['vita-health-tokens'],
-        $theme_version
+        filemtime(get_template_directory() . '/assets/css/base.css')
     );
 
     wp_enqueue_style(
         'vita-health-typography',
         get_template_directory_uri() . '/assets/css/typography.css',
         ['vita-health-tokens', 'vita-health-base'],
-        $theme_version
+        filemtime(get_template_directory() . '/assets/css/typography.css')
     );
 
     wp_enqueue_style(
