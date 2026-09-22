@@ -2,7 +2,7 @@
   <div class="content-wrapper footer__wrapper">
     <div class="footer__content">
       <div class="footer__address">
-        <img class="footer__logo" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-vita-m.svg'); ?>" width="106" height="50" alt="Vita Health Media">
+        <img class="footer__logo" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-vita-m_ivory.svg'); ?>" width="106" height="50" alt="Vita Health Media">
         <address>
           Vita Health Media GmbH<br>
           Büro Hamburg: Jessenstraße 4–6, 22767 Hamburg<br>

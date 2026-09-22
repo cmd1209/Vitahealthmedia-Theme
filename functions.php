@@ -22,6 +22,15 @@ function vita_health_navigation_classes($classes, $item, $args) {
 
 add_filter('nav_menu_css_class', 'vita_health_navigation_classes', 10, 3);
 
+function vita_health_navigation_contact_icon($title, $item, $args) {
+    if ($args->theme_location === 'primary' && trim($item->title) === 'Kontakt') {
+        $title .= '<span class="button__icon" aria-hidden="true"><i data-lucide="send"></i></span>';
+    }
+    return $title;
+}
+
+add_filter('nav_menu_item_title', 'vita_health_navigation_contact_icon', 10, 3);
+
 function vita_health_footer_link_attributes($attributes, $item, $args) {
     if ($args->theme_location === 'footer-services' && isset($attributes['href']) && strpos($attributes['href'], '#') === 0) {
         $attributes['href'] = home_url('/') . $attributes['href'];
@@ -66,7 +75,7 @@ function vita_health_enqueue_assets() {
         'vita-health-components',
         get_template_directory_uri() . '/assets/css/components.css',
         ['vita-health-tokens', 'vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
-        $theme_version
+        filemtime(get_template_directory() . '/assets/css/components.css')
     );
 
     wp_enqueue_style(

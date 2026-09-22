@@ -62,14 +62,10 @@
   white-space: nowrap;
 }
 
-.navigation__contact a::after {
-  content: "";
-  width: 16px;
-  height: 16px;
-  background: url('../images/icon-send.svg') center / contain no-repeat;
+.navigation__contact a:hover { 
+  background: var(--color-action-secondary-hover); 
+  text-decoration: none;
 }
-
-.navigation__contact a:hover { background: var(--color-action-secondary-hover); }
 .navigation__toggle { display: none; }
 
 @media (max-width: 960px) {
