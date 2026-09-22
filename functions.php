@@ -48,7 +48,7 @@ function vita_health_enqueue_assets() {
         'vita-health-tokens',
         get_template_directory_uri() . '/assets/css/tokens.css',
         [],
-        $theme_version
+        filemtime(get_template_directory() . '/assets/css/tokens.css')
     );
 
     wp_enqueue_style(

@@ -1,0 +1,151 @@
+/* The breakout and the inset are separate, intentional layout layers. */
+.contact-section { margin-block: 0; }
+.contact-section,
+.contact-section * { box-sizing: border-box; }
+.contact-section .wp-block-group__inner-container { display: contents; }
+.contact__container {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--padding-xl);
+  background: var(--color-surface-brand);
+}
+.contact__container::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: auto 0 0;
+  height: var(--padding-3xl);
+  background: var(--color-background-brand);
+}
+.contact {
+  width: 100%;
+  max-width: var(--contact-surface-max);
+  margin-inline: auto;
+  padding: var(--padding-lg);
+  background: var(--color-background-highlight);
+}
+.contact__row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-xs);
+  max-width: var(--content-narrow);
+  margin-inline: auto;
+}
+.contact__intro,
+.contact__form { flex: 1 1 0; min-width: 0; width: 100%; max-width: var(--contact-column-max); }
+.contact__intro { align-self: center; }
+
+.contact-section .contact__title {
+  margin: 0 0 var(--gap-sm);
+  color: var(--color-brand-secondary-500);
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-3xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-normal);
+  overflow-wrap: anywhere;
+}
+.contact__title em {
+  color: var(--color-accent-warm);
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+}
+.contact-section .contact__copy {
+  max-width: var(--contact-copy-max);
+  margin: 0;
+  color: var(--color-brand-secondary-500);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
+}
+.contact__form { align-self: center; }
+/* Remove core flow margins without disturbing the explicit component spacing. */
+.contact-section .contact__container,
+.contact-section .contact,
+.contact-section .contact__row,
+.contact-section .contact__intro,
+.contact-section .contact__form { margin-block: 0; }
+
+/* Scoped WPForms styles: the plugin retains validation, consent and submission. */
+.contact__form div.wpforms-container { margin: 0; font-family: var(--font-sans); }
+.contact__form div.wpforms-container .wpforms-form .wpforms-field {
+  margin: 0 0 var(--gap-xs);
+  padding: var(--padding-none);
+}
+.contact__form div.wpforms-container .wpforms-form :is(.wpforms-field-name, .wpforms-field-text, .wpforms-field-email, .wpforms-field-textarea) {
+  padding: var(--padding-xs) var(--padding-sm);
+  background: var(--color-surface-default);
+}
+.contact__form div.wpforms-container .wpforms-form .wpforms-field-label {
+  margin: 0 0 var(--gap-xxs);
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  font-weight: var(--font-weight-regular);
+}
+.contact__form div.wpforms-container .wpforms-form :is(input[type="text"], input[type="email"], textarea) {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: var(--size-lg);
+  margin: 0;
+  padding: var(--padding-none);
+  border: 0;
+  border-radius: var(--radius-none);
+  background: transparent;
+  color: var(--color-text-default);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
+  box-shadow: none;
+}
+.contact__form div.wpforms-container .wpforms-form .wpforms-field-row { max-width: 100%; }
+.contact__form div.wpforms-container .wpforms-form textarea { min-height: var(--size-2xl); resize: vertical; }
+.contact__form div.wpforms-container .wpforms-form :is(input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: var(--size-xxs);
+}
+.contact__form div.wpforms-container .wpforms-form :is(input, textarea, select).wpforms-error {
+  outline: 1px solid var(--color-status-error-foreground);
+}
+.contact__form div.wpforms-container .wpforms-form .wpforms-submit-container { margin: 0; padding: var(--padding-xs) 0 0; }
+.contact__form div.wpforms-container .wpforms-form button.wpforms-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--button-gap);
+  height: auto;
+  margin: 0;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border: 0;
+  border-radius: var(--button-radius-tl) var(--button-radius-tr) var(--button-radius-br) var(--button-radius-bl);
+  background: var(--color-action-secondary-background);
+  color: var(--color-action-secondary-label);
+  font-family: var(--font-sans);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: var(--button-font-weight);
+  box-shadow: none;
+  cursor: pointer;
+}
+.contact__form div.wpforms-container .wpforms-form button.wpforms-submit::after {
+  content: "";
+  width: var(--size-xs);
+  height: var(--size-xs);
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+.contact__form div.wpforms-container .wpforms-form button.wpforms-submit:hover { background: var(--color-action-secondary-hover); }
+.contact__form div.wpforms-container .wpforms-form button.wpforms-submit:focus-visible {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: var(--size-xxs);
+}
+.contact__form div.wpforms-container .wpforms-form button.wpforms-submit:disabled { cursor: wait; opacity: .65; }
+.contact__form .wpforms-confirmation-container-full { margin: 0; padding: var(--padding-md); }
+.editor-styles-wrapper .contact-section.alignfull { width: 100%; max-width: none; margin-inline: 0; }
+@media (max-width: 700px) {
+  .contact__row { flex-direction: column; gap: var(--gap-lg); }
+  .contact__intro, .contact__form { max-width: none; }
+}

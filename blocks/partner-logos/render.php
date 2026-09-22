@@ -22,7 +22,7 @@ if (!$logos) {
 $heading_id = wp_unique_id('partner-logos-heading-');
 ?>
 <section <?php echo get_block_wrapper_attributes(['class' => 'partner-logos alignfull', 'aria-labelledby' => $heading_id]); ?>>
-  <h2 id="<?php echo esc_attr($heading_id); ?>"><?php echo esc_html($attributes['heading'] ?: __('Kunden', 'vitahealthmedia')); ?></h2>
+  <p class="eyebrow vita-eyebrow" id="<?php echo esc_attr($heading_id); ?>"><?php echo esc_html($attributes['heading'] ?: __('Kunden', 'vitahealthmedia')); ?></p>
   <button class="partner-logos__toggle" type="button" hidden aria-pressed="false" data-pause="<?php esc_attr_e('Pause logo animation', 'vitahealthmedia'); ?>" data-play="<?php esc_attr_e('Play logo animation', 'vitahealthmedia'); ?>" aria-label="<?php esc_attr_e('Pause logo animation', 'vitahealthmedia'); ?>">Ⅱ</button>
   <div class="partner-logos__viewport" tabindex="0" role="group" aria-label="<?php esc_attr_e('Customer logos', 'vitahealthmedia'); ?>">
     <div class="partner-logos__track">

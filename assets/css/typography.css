@@ -191,6 +191,8 @@ body:not(.wp-admin),
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
+  text-align: center;
+  margin-block: var(--gap-sm) var(--gap-lg);
 }
 
 /* Labels */

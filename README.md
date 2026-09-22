@@ -279,3 +279,34 @@ the viewport and supplies a pause/play button; no carousel library is required.
 Hover and keyboard focus pause the strip. Reduced-motion users get a manually
 scrollable row without clones; without JavaScript the original row remains
 scrollable. The editor shows a static, wrapping preview for easy selection.
+
+## Contact Section (WPForms)
+
+Insert **Patterns → Vita Health → Contact Section** on any page. Edit the eyebrow,
+headline and introduction directly, then select the WPForms block in the right
+column and choose an existing form. WPForms must be installed and active; the
+pattern does not create a form or hard-code an ID. No form appears on the frontend
+until one is selected. The native form picker follows WPForms’ normal permissions.
+
+To match the prototype, use a Simple Name field (required), Email (required),
+Single Line Text labelled “Unternehmen”, and Paragraph Text labelled “Nachricht”
+(required), with submit text “Senden”. Keep labels visible and use a single-column
+form. Configure notifications, confirmation, consent and spam protection normally
+in WPForms. The section CSS is scoped to this pattern; WPForms elsewhere is unchanged.
+
+The full-width `contact-section` contains a separate `contact__container` with
+`--padding-xl` on every side. Its lavender `.contact` surface stays inset, including
+on mobile. A decorative pseudo-element reproduces the dark lower strip. The row
+stacks below 700px. All padding, margins and gaps use the theme tokens; prototype
+field spacing is mapped to the existing XS/SM tokens. Contact-specific width tokens
+preserve the prototype's surface and text limits.
+
+Each insertion has independent text and form selection. Selecting the same WPForms
+form on multiple pages shares that form's fields and settings, as usual. If you
+need an anchor for a navigation link, set a unique HTML anchor on the outer group.
+
+Verify with WPForms Pro active: insert the pattern, choose a form, save/reopen,
+check desktop/mobile gutters, keyboard focus, required/email validation, consent,
+AJAX confirmation and delivery to the configured notification recipient. WPForms
+is not present in this repository's local plugin directory, so live plugin rendering
+and submission must be checked in the site's WPForms environment.

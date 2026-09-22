@@ -13,6 +13,7 @@ function vita_health_register_pattern_category() {
         'leistung-grid' => __('Leistung Grid', 'vitahealthmedia'),
         'leistung-section' => __('Leistung Section', 'vitahealthmedia'),
         'partner-logos' => __('Partner Logos', 'vitahealthmedia'),
+        'contact-section' => __('Contact Section', 'vitahealthmedia'),
     ];
     foreach ($patterns as $slug => $title) {
         if (WP_Block_Patterns_Registry::get_instance()->is_registered('vita-health/' . $slug)) {
@@ -46,6 +47,12 @@ function vita_health_pattern_styles() {
     if (is_admin()) {
         wp_enqueue_style('vita-health-base', get_template_directory_uri() . '/assets/css/base.css', ['vita-health-tokens'], filemtime(get_template_directory() . '/assets/css/base.css'));
     }
+    wp_enqueue_style(
+        'vita-health-contact',
+        get_template_directory_uri() . '/assets/css/components/contact.css',
+        ['vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
+        filemtime(get_template_directory() . '/assets/css/components/contact.css')
+    );
     wp_enqueue_style(
         'vita-health-quote-section',
         get_template_directory_uri() . '/assets/css/components/quote-section.css',

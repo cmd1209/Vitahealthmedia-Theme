@@ -6,6 +6,10 @@
   --content-medium: 60rem;     /* 960px */
   --content-wide: 1440px;
   --media-maximum: 2560px;
+  /* Contact layout from the approved prototype. */
+  --contact-surface-max: 1100px;
+  --contact-column-max: 480px;
+  --contact-copy-max: 300px;
 
   /* Motion */
   --transition-fast: 160ms ease;
