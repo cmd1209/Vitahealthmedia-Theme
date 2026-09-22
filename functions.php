@@ -44,6 +44,14 @@ add_filter('nav_menu_link_attributes', 'vita_health_footer_link_attributes', 10,
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
 
+    wp_enqueue_script(
+        'vita-health-contact',
+        get_template_directory_uri() . '/assets/js/contact.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/contact.js'),
+        true
+    );
+
     wp_enqueue_style(
         'vita-health-tokens',
         get_template_directory_uri() . '/assets/css/tokens.css',
