@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/partner-logos",
+  "version": "1.0.0",
+  "title": "Partner Logos",
+  "category": "design",
+  "icon": "images-alt2",
+  "description": "Full-width looping customer logos selected from the Media Library.",
+  "textdomain": "vitahealthmedia",
+  "attributes": {
+    "heading": { "type": "string", "default": "Kunden" },
+    "logoIds": { "type": "array", "default": [], "items": { "type": "number" } },
+    "useDefaults": { "type": "boolean", "default": true }
+  },
+  "supports": { "html": false, "align": false },
+  "editorScript": "vita-health-partner-logos-editor",
+  "style": "vita-health-partner-logos",
+  "viewScript": "vita-health-partner-logos",
+  "render": "file:./render.php"
+}

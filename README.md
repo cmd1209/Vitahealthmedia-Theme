@@ -249,3 +249,33 @@ on lavender #f4f1ff has approximately 2.04:1 contrast, below WCAG AA's 3:1
 requirement for large text. Exact color matching is preserved; meeting that
 requirement needs approval of a darker coral. Color does not convey exclusive
 meaning in the quote.
+
+## Partner Logos
+
+Also available under **Patterns → Vita Health → Partner Logos** on any page.
+Each insertion creates an independent, editable block with the starter logos.
+
+Insert **Partner Logos** from the block inserter wherever the customer strip belongs.
+It breaks out of the centered content wrapper to fill the viewport. The heading
+(default: “Kunden”) is editable directly in the block.
+
+The block starts with the seven approved prototype logos, bundled in the theme.
+In its sidebar, choose **Select / edit logos** to replace the starter set with
+images from the WordPress Media Library. Select/upload the desired logos and
+confirm the gallery selection. Use the arrows below each logo to reorder it,
+remove individual logos with ×, or reopen the media picker to edit the selection.
+**Restore starter logos** resets the set. An explicitly empty selection renders
+no section on the frontend.
+
+Use transparent PNG/WebP images with light artwork and meaningful alternative
+text (the customer name). Media Library selections are stored as attachment IDs;
+PHP resolves their current image URLs and alt text on each render and skips
+missing attachments. The bundled starter images do not create Media Library
+records automatically.
+
+The frontend preserves the prototype's CSS marquee, 42 seconds per loop on desktop
+and 32 seconds on mobile. Small vanilla JavaScript duplicates enough sets to fill
+the viewport and supplies a pause/play button; no carousel library is required.
+Hover and keyboard focus pause the strip. Reduced-motion users get a manually
+scrollable row without clones; without JavaScript the original row remains
+scrollable. The editor shows a static, wrapping preview for easy selection.

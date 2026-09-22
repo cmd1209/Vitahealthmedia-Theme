@@ -3,11 +3,12 @@ body {
 }
 
 /* Shared viewport breakout for full-width theme sections. */
-body:not(.wp-admin):has(.hero-video, .quote-section, .leistung-section) { overflow-x: clip; }
+body:not(.wp-admin):has(.hero-video, .quote-section, .leistung-section, .partner-logos) { overflow-x: clip; }
 
 .hero-video,
 .quote-section.alignfull,
-.leistung-section.alignfull {
+.leistung-section.alignfull,
+.partner-logos.alignfull {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
 }

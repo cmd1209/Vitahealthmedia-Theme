@@ -2,6 +2,7 @@
 
 require_once get_template_directory() . '/inc/button-block.php';
 require_once get_template_directory() . '/inc/hero-video.php';
+require_once get_template_directory() . '/inc/partner-logos.php';
 require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/typography.php';
 
