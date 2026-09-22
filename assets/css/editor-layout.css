@@ -1,0 +1,40 @@
+/* Full-width sections use the editor canvas as their viewport. WordPress may
+   wrap blocks in .wp-align-wrapper, whose default maximum width is 840px. */
+.editor-styles-wrapper {
+  padding-inline: 0;
+}
+
+.editor-styles-wrapper .is-root-container {
+  row-gap: 0;
+}
+
+.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section)),
+.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section)),
+.editor-styles-wrapper .is-root-container > :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section) {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  margin-block: 0;
+}
+
+.editor-styles-wrapper :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section).wp-block {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  margin-block: 0;
+}
+
+/* These extra editor wrappers must not become flex/grid items or constrain
+   structural groups. The component itself still owns its max-width and inset. */
+.editor-styles-wrapper .wp-align-wrapper:has(> :is(
+  .contact__container, .contact, .contact__row, .contact__intro, .contact__form,
+  .leistung-section__inner, .leistung-grid, .leistung-card, .leistung-card__text,
+  .headline-lead, .quote-section__inner, .quote-section__content
+)) {
+  display: contents;
+}
+
+.editor-styles-wrapper .contact__container.wp-block {
+  width: 100%;
+  max-width: none;
+}

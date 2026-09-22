@@ -40,7 +40,7 @@
         ),
         el('section', useBlockProps({ className: 'partner-logos' }),
           el(RichText, {
-            tagName: 'h2', value: attributes.heading, allowedFormats: [],
+            tagName: 'p', className: 'eyebrow', value: attributes.heading, allowedFormats: [],
             onChange: function (heading) { setAttributes({ heading: heading }); }
           }),
           el('div', { className: 'partner-logos__editor-list' },
