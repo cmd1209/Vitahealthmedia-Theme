@@ -74,6 +74,20 @@ ask whether the same result can be achieved cleanly with:
 
 If yes, prefer the simpler solution.
 
+
+## CSS Formatting
+
+Use expanded, readable CSS formatting.
+
+Prefer:
+
+```css
+.component {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
 ---
 
 ## Theme Scope
