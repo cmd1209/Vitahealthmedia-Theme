@@ -142,3 +142,41 @@ function vita_health_enqueue_assets() {
 }
 
 add_action('wp_enqueue_scripts', 'vita_health_enqueue_assets');
+
+function vita_disable_current_state_for_anchor_links($items) {
+    foreach ($items as $item) {
+        $url = $item->url ?? '';
+
+        if (strpos($url, '#') !== false) {
+            $item->classes = array_diff(
+                $item->classes,
+                [
+                    'current-menu-item',
+                    'current_page_item',
+                    'current-menu-parent',
+                    'current_page_parent',
+                    'current-menu-ancestor',
+                    'current_page_ancestor',
+                ]
+            );
+
+            $item->current = false;
+            $item->current_item_parent = false;
+            $item->current_item_ancestor = false;
+        }
+    }
+
+    return $items;
+}
+
+add_filter('wp_nav_menu_objects', 'vita_disable_current_state_for_anchor_links');
+
+function vita_disable_aria_current_for_anchor_links($atts, $item) {
+    if (!empty($item->url) && strpos($item->url, '#') !== false) {
+        unset($atts['aria-current']);
+    }
+
+    return $atts;
+}
+
+add_filter('nav_menu_link_attributes', 'vita_disable_aria_current_for_anchor_links', 10, 2);
