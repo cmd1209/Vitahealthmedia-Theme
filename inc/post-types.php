@@ -10,6 +10,7 @@ function vita_register_project_post_type() {
         ],
         'public'       => true,
         'show_in_rest' => true,
+        'taxonomies'   => ['category'],
         'menu_icon'    => 'dashicons-portfolio',
         'supports'     => [
             'title',

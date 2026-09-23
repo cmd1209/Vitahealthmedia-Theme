@@ -356,8 +356,8 @@ motion disables smooth programmatic scrolling. Standard card links stay tabbable
 CTA and control icons use the existing Lucide initializer and button/icon classes.
 
 Assets are enqueued by `inc/project-slider.php`; CSS uses the shared tokens and
-breakout utility. No build tools or dependencies were added. The existing `project`
-registration, archive and single-project templates are unchanged. Native Shortcode
+breakout utility. No build tools or dependencies were added. The existing `project` registration now shares WordPress Categories with Posts;
+archive and single-project templates are unchanged. Native Shortcode
 blocks remain shortcode editing controls; use page Preview for the rendered slider.
 
 ### Projects Slider pattern controls
@@ -371,8 +371,9 @@ Select it and open **Projects query** in the sidebar:
 - **Selected categories / terms:** choose an existing public project taxonomy and
   one or more terms. Projects matching any selected term are included (exact terms,
   without automatically including child categories).
-- **Related to the current project:** choose a taxonomy; on a project page, this
-  queries projects sharing any of its terms and excludes the current project.
+- **Related to this project / article:** choose Categories (or another shared
+  taxonomy); this queries projects sharing any of the current project or article’s
+  terms and excludes the source project.
   On ordinary pages, use selected terms instead.
 
 The slider has no section heading or introduction. The PHP-rendered
@@ -381,9 +382,25 @@ scrollable preview. Queries rerun on page load, so new published projects appear
 without editing the pattern again. Six requested items currently shows the three
 available projects, without duplicates.
 
-No taxonomy is registered by this feature. Once a public taxonomy is attached to
-`project`, reload the editor and it appears in the selector along with its terms.
+The built-in `category` taxonomy is shared by `project` and standard Posts. No
+new taxonomy or category terms are created. Other public project taxonomies also
+appear in the selector after reloading the editor.
 Filtered/related queries with no taxonomy, no selected/shared terms or no matches
 render nothing on the frontend and show an editor placeholder. They never silently
 fall back to unrelated projects. The existing shortcode remains supported for count
 and order; the block sidebar exposes the full query controls.
+
+### Related projects on projects and articles
+
+Assign shared categories using the normal **Categories** panel on both Projects
+and Posts. Insert **Patterns → Vita Health → Related Projects** into the project or
+article content. It defaults to four newest matching published projects, sharing
+at least one exact category, with the current project excluded. Count remains
+editable. Unmatched or uncategorized sources produce no section.
+
+Articles here are WordPress Posts (`post`). Ordinary pages use explicit selected
+terms instead. Shared categories, including any default category assigned by
+WordPress, count as matches; assign meaningful topic categories for useful results.
+The pattern is ready for both content types; automatic placement in future single
+project/article templates is separate from this change. No content is automatically
+recategorized and no single template is created here.

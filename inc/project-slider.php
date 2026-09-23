@@ -45,7 +45,8 @@ function vita_health_project_slider_query($settings) {
     }
     if ($mode === 'related') {
         $current = absint($settings['currentPostId'] ?? (get_queried_object_id() ?: get_the_ID()));
-        if (get_post_type($current) !== 'project') {
+        $current_type = get_post_type($current);
+        if (!in_array($current_type, ['project', 'post'], true) || !is_object_in_taxonomy($current_type, $taxonomy->name)) {
             return null;
         }
         $terms = wp_get_object_terms($current, $taxonomy->name, ['fields' => 'ids']);
