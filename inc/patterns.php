@@ -14,6 +14,7 @@ function vita_health_register_pattern_category() {
         'leistung-section' => __('Leistung Section', 'vitahealthmedia'),
         'partner-logos' => __('Partner Logos', 'vitahealthmedia'),
         'contact-section' => __('Contact Section', 'vitahealthmedia'),
+        'project-slider' => __('Projects Slider', 'vitahealthmedia'),
     ];
     foreach ($patterns as $slug => $title) {
         if (WP_Block_Patterns_Registry::get_instance()->is_registered('vita-health/' . $slug)) {

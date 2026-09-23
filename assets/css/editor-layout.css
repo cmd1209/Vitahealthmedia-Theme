@@ -8,16 +8,16 @@
   row-gap: 0;
 }
 
-.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section)),
-.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section)),
-.editor-styles-wrapper .is-root-container > :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section) {
+.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
+.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
+.editor-styles-wrapper .is-root-container > :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor) {
   width: 100%;
   max-width: none;
   margin-inline: 0;
   margin-block: 0;
 }
 
-.editor-styles-wrapper :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section).wp-block {
+.editor-styles-wrapper :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor).wp-block {
   width: 100%;
   max-width: none;
   margin-inline: 0;
@@ -37,4 +37,15 @@
 .editor-styles-wrapper .contact__container.wp-block {
   width: 100%;
   max-width: none;
+}
+
+/* The PHP preview retains its frontend layout within the block's canvas width. */
+.editor-styles-wrapper .project-slider-editor .project-slider.alignfull {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.editor-styles-wrapper .project-slider-editor .project-card__link {
+  pointer-events: none;
 }

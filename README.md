@@ -310,3 +310,80 @@ check desktop/mobile gutters, keyboard focus, required/email validation, consent
 AJAX confirmation and delivery to the configured notification recipient. WPForms
 is not present in this repository's local plugin directory, so live plugin rendering
 and submission must be checked in the site's WPForms environment.
+
+## Projects Slider
+
+Prefer **Patterns → Vita Health → Projects Slider** for visual editing and query controls.
+Alternatively, insert a native **Shortcode** block containing `[vita_projects]` on the desired page,
+inside the normal content flow (not inside a narrow column). No page content is
+changed automatically. The shortcode delegates to the reusable template part:
+
+```php
+get_template_part('parts/project-slider');
+```
+
+The template queries `project` with `WP_Query`: published posts only, newest date
+first, three posts, no pagination count. For a different count or oldest-first order:
+
+```text
+[vita_projects count="6" order="ASC"]
+```
+
+PHP callers can pass `count` and `order` as template arguments:
+
+```php
+get_template_part('parts/project-slider', null, ['count' => 6, 'order' => 'DESC']);
+```
+
+The defaults and `orderby` are together at the top of `parts/project-slider.php`.
+The template resets post data and outputs nothing for an empty query. It uses saved
+excerpts only, without generating excerpts from long project content. A category
+label appears only when a public taxonomy is already registered for `project` and
+has an assigned term. No taxonomy is created.
+
+Featured Images are rendered with `get_the_post_thumbnail()` at `large` size, with
+WordPress `srcset`, responsive `sizes`, lazy loading, and `object-fit: cover`. The
+Media Library alt text is retained; an empty alt falls back to the project title.
+For more descriptive alternatives, edit the attachment's alt text in Media Library.
+A project without an image keeps its colored card and working link.
+
+The prototype's three-column, edge-to-edge desktop composition becomes two columns
+on tablet and one on mobile. CSS scroll-snap provides touch/trackpad/scrollbar
+navigation without JavaScript. The small local script adds previous/next buttons
+and Arrow/Home/End keys when the scroller is focused. Controls hide when all cards
+fit and expose disabled states at each end. There is no autoplay or loop. Reduced
+motion disables smooth programmatic scrolling. Standard card links stay tabbable;
+CTA and control icons use the existing Lucide initializer and button/icon classes.
+
+Assets are enqueued by `inc/project-slider.php`; CSS uses the shared tokens and
+breakout utility. No build tools or dependencies were added. The existing `project`
+registration, archive and single-project templates are unchanged. Native Shortcode
+blocks remain shortcode editing controls; use page Preview for the rendered slider.
+
+### Projects Slider pattern controls
+
+Each pattern insertion creates an independent dynamic **Projects Slider** block.
+Select it and open **Projects query** in the sidebar:
+
+- **Number of projects:** 1–24; choose 6 for the latest six projects.
+- **Order:** newest or oldest first.
+- **All projects:** queries published projects without a taxonomy filter.
+- **Selected categories / terms:** choose an existing public project taxonomy and
+  one or more terms. Projects matching any selected term are included (exact terms,
+  without automatically including child categories).
+- **Related to the current project:** choose a taxonomy; on a project page, this
+  queries projects sharing any of its terms and excludes the current project.
+  On ordinary pages, use selected terms instead.
+
+The slider has no section heading or introduction. The PHP-rendered
+editor preview uses the same cards and query as the frontend; it remains a static,
+scrollable preview. Queries rerun on page load, so new published projects appear
+without editing the pattern again. Six requested items currently shows the three
+available projects, without duplicates.
+
+No taxonomy is registered by this feature. Once a public taxonomy is attached to
+`project`, reload the editor and it appears in the selector along with its terms.
+Filtered/related queries with no taxonomy, no selected/shared terms or no matches
+render nothing on the frontend and show an editor placeholder. They never silently
+fall back to unrelated projects. The existing shortcode remains supported for count
+and order; the block sidebar exposes the full query controls.

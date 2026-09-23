@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/project-slider",
+  "title": "Projects Slider",
+  "category": "design",
+  "icon": "portfolio",
+  "description": "Projects selected by count, order or existing project categories.",
+  "textdomain": "vitahealthmedia",
+  "attributes": {
+    "count": { "type": "number", "default": 3 },
+    "order": { "type": "string", "default": "DESC" },
+    "mode": { "type": "string", "default": "latest" },
+    "taxonomy": { "type": "string", "default": "" },
+    "terms": { "type": "array", "default": [], "items": { "type": "number" } }
+  },
+  "usesContext": ["postId"],
+  "supports": { "html": false, "align": false },
+  "editorScript": "vita-health-project-slider-editor"
+}
