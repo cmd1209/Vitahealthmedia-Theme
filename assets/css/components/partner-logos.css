@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 .partner-logos h2 {
-  margin: 0 48px var(--gap-xl);
+  margin: 0 var(--gap-2xl) var(--gap-xl);
   text-align: center;
   font-family: var(--font-sans);
   font-size: var(--font-size-lg);

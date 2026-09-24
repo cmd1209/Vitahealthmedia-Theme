@@ -177,8 +177,8 @@
 }
 
 @media (max-width: 640px) {
-  .project-slider{
-   margin-block: 0 var(--gap-lg);
+  .project-slider {
+    margin-block: 0 var(--gap-lg);
   }
 
   .project-slider__track {

@@ -127,12 +127,12 @@
 }
 .contact-section .contact__form div.wpforms-container .wpforms-form .wpforms-field-row { max-width: 100%; }
 .contact-section .contact__form div.wpforms-container .wpforms-form textarea { min-height: var(--size-2xl); resize: vertical; }
+.contact-section .contact__form div.wpforms-container .wpforms-form :is(input, textarea, select).wpforms-error {
+  outline: 1px solid var(--color-status-error-foreground);
+}
 .contact-section .contact__form div.wpforms-container .wpforms-form :is(input, textarea, select):focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: var(--size-xxs);
-}
-.contact-section .contact__form div.wpforms-container .wpforms-form :is(input, textarea, select).wpforms-error {
-  outline: 1px solid var(--color-status-error-foreground);
 }
 .contact-section .contact__form div.wpforms-container .wpforms-form .wpforms-submit-container { margin: 0; padding: var(--padding-xs) 0 0; }
 .contact-section .contact__form div.wpforms-container .wpforms-form button.wpforms-submit {

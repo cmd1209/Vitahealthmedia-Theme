@@ -64,7 +64,6 @@ body:not(.wp-admin),
 :where(body:not(.wp-admin), .editor-styles-wrapper) h2,
 .h2 {
   font-family: var(--font-sans);
-  letter-spacing: var(--letter-spacing-normal);
   font-size: var(--font-size-4xl);
   line-height: var(--line-height-3xl);
   font-weight: var(--font-weight-semibold);

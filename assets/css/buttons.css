@@ -17,8 +17,14 @@
   cursor: pointer;
 }
 
-:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):hover { background: var(--vita-button-hover, var(--color-action-primary-hover)); }
-:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):focus-visible { outline: 3px solid var(--color-border-focus); outline-offset: 4px; }
+:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):hover {
+  background: var(--vita-button-hover, var(--color-action-primary-hover));
+}
+
+:where(body:not(.wp-admin), .editor-styles-wrapper) :is(.button, .vita-button-editor .wp-block-button__link):focus-visible {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 4px;
+}
 
 .button__icon {
   display: inline-flex;
@@ -52,6 +58,11 @@
   --vita-button-hover: var(--color-action-highlight-hover);
 }
 
+:where(body:not(.wp-admin), .editor-styles-wrapper) .button--highlight:hover,
+.editor-styles-wrapper .vita-button-editor.button--highlight .wp-block-button__link:hover {
+  color: var(--color-action-highlight-label-inverse);
+}
+
 .button--default {
   --vita-button-padding-x: var(--button-padding-x);
   --vita-button-padding-y: var(--button-padding-y);
@@ -83,9 +94,17 @@
 
 /* Keep formatted text inline unless the frontend has a separate icon/text pair. */
 .wp-block-button .wp-block-button__link.button,
-.vita-button-editor .wp-block-button__link { display: inline-block; }
-.wp-block-button .wp-block-button__link.button--has-icon { display: inline-flex; }
-.button__text { min-width: 0; }
+.vita-button-editor .wp-block-button__link {
+  display: inline-block;
+}
+
+.wp-block-button .wp-block-button__link.button--has-icon {
+  display: inline-flex;
+}
+
+.button__text {
+  min-width: 0;
+}
 
 /* Editor-only Lucide preview: no extra nodes in the editable button text. */
 .vita-button-icon-left .wp-block-button__link::before,
@@ -98,5 +117,10 @@
   background: currentColor;
   mask: var(--vita-button-icon) center / contain no-repeat;
 }
-.vita-button-icon-left .wp-block-button__link::before { margin-inline-end: var(--button-gap); }
-.vita-button-icon-right .wp-block-button__link::after { margin-inline-start: var(--button-gap); }
+.vita-button-icon-left .wp-block-button__link::before {
+  margin-inline-end: var(--button-gap);
+}
+
+.vita-button-icon-right .wp-block-button__link::after {
+  margin-inline-start: var(--button-gap);
+}

@@ -287,19 +287,19 @@
 
   
   /* Button geometry */
-  --button-gap: 8px;
-  --button-padding-x: 24px;
-  --button-padding-y: 12px;
+  --button-gap: var(--gap-xs);
+  --button-padding-x: var(--padding-lg);
+  --button-padding-y: var(--padding-sm);
 
   --button-radius-tl: 0px;
-  --button-radius-tr: 12px;
+  --button-radius-tr: var(--radius-md);
   --button-radius-br: 0px;
-  --button-radius-bl: 12px;
+  --button-radius-bl: var(--radius-md);
 
   /* Button typography */
-  --button-font-size: 14px;
-  --button-line-height: 20px;
-  --button-font-weight: 500;
+  --button-font-size: var(--font-size-sm);
+  --button-line-height: var(--line-height-sm);
+  --button-font-weight: var(--font-weight-medium);
 
 
 

@@ -104,6 +104,7 @@
 
 .project-archive__filter:hover {
   background: var(--color-action-highlight-hover);
+  color: var(--color-action-highlight-label-inverse);
 }
 
 .project-archive__filter.is-active {
