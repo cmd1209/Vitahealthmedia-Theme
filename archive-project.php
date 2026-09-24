@@ -51,7 +51,6 @@ if (!in_array($selected_category, $valid_slugs, true)) {
         <?php while (have_posts()) : the_post();
             get_template_part('parts/project-card', null, [
                 'title_id' => 'archive-project-' . get_the_ID(),
-                'variant' => $wp_query->current_post % 3 === 0 ? 'secondary' : 'highlight',
             ]);
         endwhile; ?>
       </div>

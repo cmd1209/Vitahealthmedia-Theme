@@ -6,6 +6,8 @@ require_once get_template_directory() . '/inc/partner-logos.php';
 require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/typography.php';
 require_once get_template_directory() . '/inc/post-types.php';
+require_once get_template_directory() . '/inc/gradients.php';
+require_once get_template_directory() . '/inc/project-cta.php';
 require_once get_template_directory() . '/inc/project-slider.php';
 
 function vita_health_register_menus() {
@@ -52,6 +54,13 @@ add_action('after_setup_theme', 'vita_health_theme_setup');
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
 
+    wp_enqueue_style(
+        'vita-health-colors',
+        get_template_directory_uri() . '/assets/css/color.css',
+        ['vita-health-tokens'],
+        filemtime(get_template_directory() . '/assets/css/color.css')
+    );
+
     if (is_post_type_archive('project')) {
         wp_enqueue_style(
             'vita-health-project-archive',
@@ -72,7 +81,7 @@ function vita_health_enqueue_assets() {
         wp_enqueue_style(
             'vita-health-project-hero',
             get_template_directory_uri() . '/assets/css/components/project-hero.css',
-            ['vita-health-base', 'vita-health-typography'],
+            ['vita-health-base', 'vita-health-typography', 'vita-health-colors'],
             filemtime(get_template_directory() . '/assets/css/components/project-hero.css')
         );
     }

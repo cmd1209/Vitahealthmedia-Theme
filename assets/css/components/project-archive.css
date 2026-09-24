@@ -153,20 +153,6 @@
   letter-spacing: 0;
 }
 
-.project-archive .project-card:nth-child(6n + 2) .project-card__overlay,
-.project-archive .project-card:nth-child(6n + 4) .project-card__overlay {
-  background: linear-gradient(180deg, rgba(213, 199, 255, .9) 18%, rgba(120, 106, 165, .91) 89%);
-}
-
-.project-archive .project-card:nth-child(6n + 3) .project-card__overlay,
-.project-archive .project-card:nth-child(6n + 5) .project-card__overlay {
-  background: linear-gradient(180deg, rgba(76, 126, 100, .79) 18%, rgba(76, 126, 100, .91) 89%);
-}
-
-.project-archive .project-card:nth-child(6n + 6) .project-card__overlay {
-  background: linear-gradient(180deg, rgba(255, 179, 163, .89) 9%, rgba(168, 92, 76, .93) 89%);
-}
-
 .project-archive__pagination {
   display: flex;
   justify-content: center;

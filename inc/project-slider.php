@@ -4,7 +4,7 @@ function vita_health_project_slider_assets() {
     wp_enqueue_style(
         'vita-health-project-slider',
         get_template_directory_uri() . '/assets/css/components/project-slider.css',
-        ['vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
+        ['vita-health-base', 'vita-health-typography', 'vita-health-buttons', 'vita-health-colors'],
         filemtime(get_template_directory() . '/assets/css/components/project-slider.css')
     );
     wp_enqueue_script(

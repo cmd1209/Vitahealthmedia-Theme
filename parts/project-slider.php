@@ -30,10 +30,8 @@ $taxonomies = array_filter(get_object_taxonomies('project', 'objects'), static f
                   break;
               }
           }
-          $button_variant = $projects->current_post % 3 === 2 ? 'highlight' : 'primary';
           get_template_part('parts/project-card', null, [
               'title_id' => $title_id,
-              'variant' => $button_variant,
               'heading_tag' => 'h3',
               'category' => $category,
               'button_size' => 'default',

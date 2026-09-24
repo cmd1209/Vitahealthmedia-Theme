@@ -1,0 +1,176 @@
+:root {
+  /* Named gradients from the Vita Health Figma palette. */
+  --vita-gradient-lavender: linear-gradient(
+    180deg,
+    var(--color-brand-cool-500) 18.538%,
+    var(--color-brand-cool-900) 88.797%
+  );
+  --vita-gradient-coral: linear-gradient(
+    180deg,
+    var(--color-brand-warm-100) 18.538%,
+    var(--color-brand-warm-500) 88.797%
+  );
+  --vita-gradient-terracotta: linear-gradient(
+    180deg,
+    var(--color-brand-warm-300) 18.538%,
+    var(--color-brand-warm-700) 88.797%
+  );
+  --vita-gradient-evergreen: linear-gradient(
+    180deg,
+    var(--color-brand-secondary-500) 18.538%,
+    var(--color-brand-secondary-700) 88.797%
+  );
+  --vita-gradient-sage: linear-gradient(
+    180deg,
+    var(--color-brand-secondary-100) 18.538%,
+    var(--color-brand-soft-900) 88.797%
+  );
+  --vita-gradient-mint: linear-gradient(
+    180deg,
+    var(--color-brand-soft-500) 18.538%,
+    var(--color-brand-soft-900) 88.797%
+  );
+
+  /* Transparent counterparts keep featured images visible. */
+  --vita-gradient-overlay-lavender: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-cool-500) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-cool-900) 96%, transparent) 88.797%
+  );
+  --vita-gradient-overlay-coral: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-warm-100) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-warm-500) 96%, transparent) 88.797%
+  );
+  --vita-gradient-overlay-terracotta: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-warm-300) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-warm-700) 96%, transparent) 88.797%
+  );
+  --vita-gradient-overlay-evergreen: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-secondary-500) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-secondary-700) 96%, transparent) 88.797%
+  );
+  --vita-gradient-overlay-sage: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-secondary-100) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-soft-900) 96%, transparent) 88.797%
+  );
+  --vita-gradient-overlay-mint: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-brand-soft-500) 85%, transparent) 18.538%,
+    color-mix(in srgb, var(--color-brand-soft-900) 96%, transparent) 88.797%
+  );
+
+  --vita-gradient: var(--vita-gradient-evergreen);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-evergreen);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--lavender {
+  --vita-gradient: var(--vita-gradient-lavender);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-lavender);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--coral {
+  --vita-gradient: var(--vita-gradient-coral);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-coral);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--terracotta {
+  --vita-gradient: var(--vita-gradient-terracotta);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-terracotta);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--evergreen {
+  --vita-gradient: var(--vita-gradient-evergreen);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-evergreen);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--sage {
+  --vita-gradient: var(--vita-gradient-sage);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-sage);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+.vita-gradient--mint {
+  --vita-gradient: var(--vita-gradient-mint);
+  --vita-gradient-overlay: var(--vita-gradient-overlay-mint);
+  --vita-gradient-ink: var(--color-text-inverse);
+}
+
+/* Core Featured Image blocks use the post's selection in loops and articles. */
+.wp-block-post[class*="vita-gradient--"] .wp-block-post-featured-image,
+body.single-post[class*="vita-gradient--"] .wp-block-post-featured-image {
+  position: relative;
+}
+
+.wp-block-post[class*="vita-gradient--"] .wp-block-post-featured-image::after,
+body.single-post[class*="vita-gradient--"] .wp-block-post-featured-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--vita-gradient-overlay);
+  pointer-events: none;
+}
+
+.wp-block-post[class*="vita-gradient--"] .wp-block-post-featured-image figcaption,
+body.single-post[class*="vita-gradient--"] .wp-block-post-featured-image figcaption {
+  position: relative;
+  z-index: 1;
+}
+
+.vita-gradient-picker {
+  display: grid;
+  gap: 8px;
+}
+
+.vita-gradient-picker label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vita-gradient-swatch {
+  width: 36px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  background: var(--vita-gradient);
+}
+
+.vita-project-cta-picker {
+  display: grid;
+  gap: 8px;
+}
+
+.vita-project-cta-picker label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vita-project-cta-swatch {
+  width: 36px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-pill);
+}
+
+.vita-project-cta-swatch--primary {
+  background: var(--color-action-primary-background);
+}
+
+.vita-project-cta-swatch--secondary {
+  background: var(--color-action-secondary-background);
+}
+
+.vita-project-cta-swatch--highlight {
+  background: var(--color-action-highlight-background);
+}

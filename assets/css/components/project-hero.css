@@ -7,8 +7,12 @@
   min-height: 650px;
   padding-block: var(--padding-3xl);
   overflow: hidden;
-  background: var(--color-background-brand);
-  color: var(--color-text-inverse);
+  background: var(--vita-gradient);
+  color: var(--vita-gradient-ink);
+}
+
+.project-page__content {
+  padding-top: var(--padding-xl);
 }
 
 .project-hero__image,
@@ -26,10 +30,7 @@
 }
 
 .project-hero__overlay {
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--color-brand-secondary-300) 80%, transparent),
-    color-mix(in srgb, var(--color-brand-secondary-500) 80%, transparent)
-  );
+  background: var(--vita-gradient-overlay);
 }
 
 .project-hero__inner {

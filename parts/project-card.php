@@ -1,13 +1,13 @@
 <?php
 $title_id = $args['title_id'] ?? wp_unique_id('project-title-');
-$variant = $args['variant'] ?? 'secondary';
+$variant = vita_health_get_project_cta_variant(get_the_ID());
 $heading_tag = ($args['heading_tag'] ?? 'h2') === 'h3' ? 'h3' : 'h2';
 $category = $args['category'] ?? '';
 $button_size = ($args['button_size'] ?? 'small') === 'default' ? 'button--default button--small-mobile' : 'button--small';
 $excerpt = has_excerpt() ? get_the_excerpt() : '';
 $image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
 ?>
-<article class="project-card">
+<article class="project-card <?php echo esc_attr(vita_health_gradient_class(get_the_ID())); ?>">
   <a class="project-card__link" href="<?php the_permalink(); ?>" aria-labelledby="<?php echo esc_attr($title_id); ?>">
     <div class="project-card__media">
       <?php echo get_the_post_thumbnail(get_the_ID(), 'large', [

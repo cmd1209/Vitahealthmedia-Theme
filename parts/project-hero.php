@@ -7,7 +7,7 @@ if (!$image_id || !wp_attachment_is_image($image_id)) {
 $heading_id = wp_unique_id('project-hero-title-');
 $excerpt = has_excerpt() ? get_the_excerpt() : '';
 ?>
-<header class="project-hero alignfull" aria-labelledby="<?php echo esc_attr($heading_id); ?>">
+<header class="project-hero alignfull <?php echo esc_attr(vita_health_gradient_class(get_the_ID())); ?>" aria-labelledby="<?php echo esc_attr($heading_id); ?>">
   <?php if ($image_id) : ?>
     <?php echo wp_get_attachment_image($image_id, 'full', false, [
         'class' => 'project-hero__image',

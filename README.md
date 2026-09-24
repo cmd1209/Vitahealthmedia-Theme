@@ -410,7 +410,7 @@ recategorized and no single template is created here.
 WordPress automatically uses `single-project.php` for individual projects. Its
 `parts/project-hero.php` header reuses the full-width breakout and `content-wrapper`.
 The hero follows the Figma desktop reference: 650px minimum height, bottom-aligned
-text, a green gradient overlay, and a narrow text column. It grows with long text;
+text, the project's selected gradient overlay, and a narrow text column. It grows with long text;
 mobile uses smaller typography, token-based gutters and a 500px minimum height.
 
 Edit the project Title and Excerpt to change the heading and lead. An empty excerpt
@@ -420,7 +420,7 @@ decorative; the title and excerpt provide the text content.
 
 Without a valid Featured Image, the template resolves the Media Library attachment
 slug `project-blanco_kv` (no hard-coded media ID or upload URL). Keep that attachment
-slug when replacing the fallback. If it is absent too, the hero retains its green
+slug when replacing the fallback. If it is absent too, the hero retains its selected gradient
 background and text. Existing post content renders below the hero in the shared
 wrapper; no additional project-detail layout or related section is added here.
 
@@ -439,8 +439,29 @@ with a full page load if JavaScript or the request fails. Assign categories in a
 project's editor to activate those filters. The archive grid uses each project's
 Featured Image, Title, and optional Excerpt.
 
+In a Project editor, use the **Project card CTA** box to choose Primary,
+Secondary, or Highlight. The choice follows that project in both the slider and
+archive. Projects without a saved choice use Primary. The button colors come
+from the shared action tokens in `assets/css/tokens.css`.
+
 To add editable content below the grid, publish a WordPress Page with the slug
 `projekt-archiv-inhalt`. Insert any Vita Health patterns there. For the Contact
 Section, select the WPForms block inside the inserted pattern and choose an
 existing form. The archive renders this Page after the grid; category changes
 leave its content and form in place. The Page needs to remain published.
+
+## Named featured-image gradients
+
+`assets/css/color.css` defines six named gradients from Figma: Lavender, Coral,
+Terracotta, Evergreen, Sage, and Mint. Each has an opaque background and a
+transparent image overlay. Edit a Project or Post and choose a swatch in the
+**Featured image gradient** meta box. The setting is saved with that item and
+applies to project cards in the slider and archive, the project detail hero, and
+WordPress Query Loop featured-image blocks for Projects and Posts. A single Post
+also uses its choice when its content includes a Post Featured Image block.
+
+**Automatic** assigns an unset item a stable gradient from its post ID. Reordering
+projects or adding new ones does not change an existing item's color. All six
+choices currently use white text on project cards and heroes. This
+feature does not add a new single-article layout or a Featured Image block to
+existing article content.
