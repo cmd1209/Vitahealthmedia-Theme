@@ -12,7 +12,7 @@
   --contact-copy-max: 300px;
 
   /* Motion */
-  --transition-fast: 160ms ease;
+  --transition-fast: 50ms ease-in-out;
 
   --background: #ffffff;
   --foreground: #171717;

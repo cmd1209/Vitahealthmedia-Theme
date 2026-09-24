@@ -3,10 +3,10 @@
     <div class="footer__content">
       <div class="footer__address">
         <img class="footer__logo" src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/logo-vita-m_ivory.svg'); ?>" width="106" height="50" alt="Vita Health Media">
-        <address>
-          Vita Health Media GmbH<br>
-          Büro Hamburg: Jessenstraße 4–6, 22767 Hamburg<br>
-          Büro München: Thierschstraße 25, 80538 München
+        <address class="footer__company">
+          <span class="body-bold">Vita Health Media GmbH</span><br>
+          <span class="body-small">Büro Hamburg: Jessenstraße 4–6, 22767 Hamburg<br></span>
+          <span class="body-small">Büro München: Thierschstraße 25, 80538 München</span>
         </address>
       </div>
       <div class="footer__menus">
