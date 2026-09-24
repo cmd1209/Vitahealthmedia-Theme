@@ -305,11 +305,11 @@ Each insertion has independent text and form selection. Selecting the same WPFor
 form on multiple pages shares that form's fields and settings, as usual. If you
 need an anchor for a navigation link, set a unique HTML anchor on the outer group.
 
-Verify with WPForms Pro active: insert the pattern, choose a form, save/reopen,
+Verify with WPForms active: insert the pattern, choose a form, save/reopen,
 check desktop/mobile gutters, keyboard focus, required/email validation, consent,
 AJAX confirmation and delivery to the configured notification recipient. WPForms
-is not present in this repository's local plugin directory, so live plugin rendering
-and submission must be checked in the site's WPForms environment.
+is installed outside this theme repository, so live form rendering and submission
+must be checked in the site's WPForms environment.
 
 ## Projects Slider
 
@@ -404,3 +404,43 @@ WordPress, count as matches; assign meaningful topic categories for useful resul
 The pattern is ready for both content types; automatic placement in future single
 project/article templates is separate from this change. No content is automatically
 recategorized and no single template is created here.
+
+## Single project hero
+
+WordPress automatically uses `single-project.php` for individual projects. Its
+`parts/project-hero.php` header reuses the full-width breakout and `content-wrapper`.
+The hero follows the Figma desktop reference: 650px minimum height, bottom-aligned
+text, a green gradient overlay, and a narrow text column. It grows with long text;
+mobile uses smaller typography, token-based gutters and a 500px minimum height.
+
+Edit the project Title and Excerpt to change the heading and lead. An empty excerpt
+omits the lead. The Featured Image is rendered as a responsive image with `srcset`,
+`object-fit: cover`, eager loading and high fetch priority. The background image is
+decorative; the title and excerpt provide the text content.
+
+Without a valid Featured Image, the template resolves the Media Library attachment
+slug `project-blanco_kv` (no hard-coded media ID or upload URL). Keep that attachment
+slug when replacing the fallback. If it is absent too, the hero retains its green
+background and text. Existing post content renders below the hero in the shared
+wrapper; no additional project-detail layout or related section is added here.
+
+## Project listing
+
+`archive-project.php` renders the project archive at `/projekte/`. It shows six
+published projects per page, with a next or previous page link when needed. The
+project slider now links to this archive below its controls. Both views render
+project cards through `parts/project-card.php`.
+
+The archive always shows **Alle Projekte**. Category filter links appear as soon
+as published projects have WordPress Categories assigned; only categories used by
+projects appear. Filtering and pagination update the grid in place using native
+JavaScript and browser history. Their ordinary URLs remain bookmarkable and work
+with a full page load if JavaScript or the request fails. Assign categories in a
+project's editor to activate those filters. The archive grid uses each project's
+Featured Image, Title, and optional Excerpt.
+
+To add editable content below the grid, publish a WordPress Page with the slug
+`projekt-archiv-inhalt`. Insert any Vita Health patterns there. For the Contact
+Section, select the WPForms block inside the inserted pattern and choose an
+existing form. The archive renders this Page after the grid; category changes
+leave its content and form in place. The Page needs to remain published.

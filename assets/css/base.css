@@ -29,14 +29,15 @@ html:has(> body:not(.wp-admin, .editor-styles-wrapper)) {
 }
 
 /* Shared viewport breakout for full-width theme sections. */
-body:not(.wp-admin):has(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider) { overflow-x: clip; }
+body:not(.wp-admin):has(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider, .project-hero) { overflow-x: clip; }
 
 .hero-video,
 .quote-section.alignfull,
 .leistung-section.alignfull,
 .partner-logos.alignfull,
 .contact-section.alignfull,
-.project-slider.alignfull {
+.project-slider.alignfull,
+.project-hero.alignfull {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
 }

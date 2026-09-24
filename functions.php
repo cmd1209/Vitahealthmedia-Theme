@@ -52,6 +52,31 @@ add_action('after_setup_theme', 'vita_health_theme_setup');
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
 
+    if (is_post_type_archive('project')) {
+        wp_enqueue_style(
+            'vita-health-project-archive',
+            get_template_directory_uri() . '/assets/css/components/project-archive.css',
+            ['vita-health-project-slider'],
+            filemtime(get_template_directory() . '/assets/css/components/project-archive.css')
+        );
+        wp_enqueue_script(
+            'vita-health-project-archive',
+            get_template_directory_uri() . '/assets/js/project-archive.js',
+            ['vita-health-icons'],
+            filemtime(get_template_directory() . '/assets/js/project-archive.js'),
+            true
+        );
+    }
+
+    if (is_singular('project')) {
+        wp_enqueue_style(
+            'vita-health-project-hero',
+            get_template_directory_uri() . '/assets/css/components/project-hero.css',
+            ['vita-health-base', 'vita-health-typography'],
+            filemtime(get_template_directory() . '/assets/css/components/project-hero.css')
+        );
+    }
+
     wp_enqueue_script(
         'vita-health-contact',
         get_template_directory_uri() . '/assets/js/contact.js',
@@ -142,6 +167,21 @@ function vita_health_enqueue_assets() {
 }
 
 add_action('wp_enqueue_scripts', 'vita_health_enqueue_assets');
+
+function vita_health_project_archive_wpforms_styles($force_load) {
+    if ($force_load || !is_post_type_archive('project')) {
+        return $force_load;
+    }
+
+    $content_page = get_page_by_path('projekt-archiv-inhalt');
+    if (!$content_page || $content_page->post_status !== 'publish') {
+        return false;
+    }
+
+    return has_block('wpforms/form-selector', $content_page)
+        || has_shortcode($content_page->post_content, 'wpforms');
+}
+add_filter('wpforms_frontend_assets_header_force_load', 'vita_health_project_archive_wpforms_styles');
 
 function vita_disable_current_state_for_anchor_links($items) {
     foreach ($items as $item) {
