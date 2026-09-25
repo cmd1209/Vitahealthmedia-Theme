@@ -1,6 +1,7 @@
 <?php
 
 require_once get_template_directory() . '/inc/button-block.php';
+require_once get_template_directory() . '/inc/inview.php';
 require_once get_template_directory() . '/inc/hero-video.php';
 require_once get_template_directory() . '/inc/partner-logos.php';
 require_once get_template_directory() . '/inc/patterns.php';
@@ -91,6 +92,14 @@ function vita_health_enqueue_assets() {
         get_template_directory_uri() . '/assets/js/contact.js',
         [],
         filemtime(get_template_directory() . '/assets/js/contact.js'),
+        true
+    );
+
+    wp_enqueue_script(
+        'vita-health-inview',
+        get_template_directory_uri() . '/assets/js/inview.js',
+        [],
+        filemtime(get_template_directory() . '/assets/js/inview.js'),
         true
     );
 

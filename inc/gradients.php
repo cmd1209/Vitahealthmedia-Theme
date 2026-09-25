@@ -132,3 +132,23 @@ function vita_health_gradient_admin_assets($hook) {
     wp_enqueue_style('vita-health-colors', get_template_directory_uri() . '/assets/css/color.css', ['vita-health-tokens'], filemtime(get_template_directory() . '/assets/css/color.css'));
 }
 add_action('admin_enqueue_scripts', 'vita_health_gradient_admin_assets');
+
+function vita_health_gradient_editor_styles() {
+    if (!is_admin()) {
+        return;
+    }
+
+    wp_enqueue_style(
+        'vita-health-tokens',
+        get_template_directory_uri() . '/assets/css/tokens.css',
+        [],
+        filemtime(get_template_directory() . '/assets/css/tokens.css')
+    );
+    wp_enqueue_style(
+        'vita-health-colors',
+        get_template_directory_uri() . '/assets/css/color.css',
+        ['vita-health-tokens'],
+        filemtime(get_template_directory() . '/assets/css/color.css')
+    );
+}
+add_action('enqueue_block_assets', 'vita_health_gradient_editor_styles');

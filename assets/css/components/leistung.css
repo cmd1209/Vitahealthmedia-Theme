@@ -48,9 +48,10 @@
 .leistung-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--gap-xl) var(--gap-md);
+  gap: var(--gap-2xl) var(--gap-md);
   width: 100%;
   max-width: var(--content-default);
+  padding-top: var(--padding-lg);
 }
 
 .leistung-card {
