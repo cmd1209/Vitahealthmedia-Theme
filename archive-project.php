@@ -38,7 +38,7 @@ if (!in_array($selected_category, $valid_slugs, true)) {
   <p class="project-archive__status" role="status" aria-live="polite" aria-atomic="true"></p>
   <div class="content-wrapper project-archive__content" tabindex="-1">
     <nav class="project-archive__filters" aria-label="<?php esc_attr_e('Projekte filtern', 'vitahealthmedia'); ?>">
-      <a class="project-archive__filter<?php echo $selected_category === '' ? ' is-active' : ''; ?>" href="<?php echo esc_url($archive_url); ?>"<?php echo $selected_category === '' ? ' aria-current="page"' : ''; ?>>Alle Projekte</a>
+      <a class="project-archive__filter<?php echo $selected_category === '' ? ' is-active' : ''; ?>" href="<?php echo esc_url($archive_url); ?>"<?php echo $selected_category === '' ? ' aria-current="page"' : ''; ?>>Alle <?php echo wp_count_posts('project')->publish; ?> Projekte</a>
       <?php foreach ($categories as $category) :
           $active = $selected_category === $category->slug;
       ?>

@@ -82,16 +82,15 @@
 .project-archive__filters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   gap: var(--gap-sm);
-  padding-block: var(--padding-lg);
+  padding-block: var(--padding-sm);
   margin-block-end: var(--gap-sm);
 }
 
 .project-archive__filter {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
   padding: var(--padding-xs) var(--padding-sm);
   border-radius: var(--radius-pill);
   background: var(--color-action-highlight-background);
