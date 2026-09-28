@@ -155,6 +155,10 @@
   pointer-events: none;
 }
 
+.related-projects_header{
+  margin-block: var(--gap-3xl) var(--gap-lg);
+}
+
 @media (max-width: 1024px) {
   .project-slider__track {
     grid-auto-columns: 50%;

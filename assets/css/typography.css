@@ -67,7 +67,7 @@ body:not(.wp-admin),
   font-size: var(--font-size-4xl);
   line-height: var(--line-height-3xl);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-wider);
+  letter-spacing: var(--letter-spacing-normal);
 }
 
 :where(body:not(.wp-admin), .editor-styles-wrapper) h3,

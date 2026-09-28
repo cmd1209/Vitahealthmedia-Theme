@@ -20,9 +20,6 @@ $image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', 
     </div>
     <div class="project-card__overlay" aria-hidden="true"></div>
     <div class="project-card__content">
-      <?php if ($category) : ?>
-        <!-- <p class="project-card__category eyebrow"><?php echo esc_html($category); ?></p>
-      <?php endif; ?> -->
       <<?php echo $heading_tag; ?> class="project-card__title" id="<?php echo esc_attr($title_id); ?>"><?php the_title(); ?></<?php echo $heading_tag; ?>>
       <?php if ($excerpt) : ?>
         <p class="project-card__excerpt"><?php echo esc_html(wp_strip_all_tags($excerpt)); ?></p>
