@@ -9,7 +9,6 @@ function vita_health_register_pattern_category() {
     $patterns = [
         'quote-section' => __('Quote Section', 'vitahealthmedia'),
         'headline-lead' => __('Headline + Lead', 'vitahealthmedia'),
-        'leistung-card' => __('Leistung Card', 'vitahealthmedia'),
         'leistung-grid' => __('Leistung Grid', 'vitahealthmedia'),
         'leistung-section' => __('Leistung Section', 'vitahealthmedia'),
         'partner-logos' => __('Partner Logos', 'vitahealthmedia'),

@@ -10,7 +10,7 @@ function vita_register_project_post_type() {
         ],
         'public'       => true,
         'show_in_rest' => true,
-        'taxonomies'   => ['category'],
+        'taxonomies'   => ['project_category'],
         'menu_icon'    => 'dashicons-portfolio',
         'supports'     => [
             'title',
@@ -36,9 +36,9 @@ function vita_project_archive_query($query) {
     $category = isset($_GET['project_category']) && is_string($_GET['project_category'])
         ? sanitize_title(wp_unslash($_GET['project_category']))
         : '';
-    if ($category && get_term_by('slug', $category, 'category')) {
+    if ($category && get_term_by('slug', $category, 'project_category')) {
         $query->set('tax_query', [[
-            'taxonomy' => 'category',
+            'taxonomy' => 'project_category',
             'field' => 'slug',
             'terms' => $category,
         ]]);

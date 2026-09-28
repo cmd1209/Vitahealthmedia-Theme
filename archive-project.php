@@ -5,19 +5,7 @@ $archive_url = get_post_type_archive_link('project');
 $selected_category = isset($_GET['project_category']) && is_string($_GET['project_category'])
     ? sanitize_title(wp_unslash($_GET['project_category']))
     : '';
-$project_ids = get_posts([
-    'post_type' => 'project',
-    'post_status' => 'publish',
-    'posts_per_page' => -1,
-    'fields' => 'ids',
-    'no_found_rows' => true,
-]);
-$categories = $project_ids ? get_terms([
-    'taxonomy' => 'category',
-    'hide_empty' => true,
-    'object_ids' => $project_ids,
-]) : [];
-$categories = is_wp_error($categories) ? [] : $categories;
+$categories = vita_health_project_categories();
 $valid_slugs = wp_list_pluck($categories, 'slug');
 if (!in_array($selected_category, $valid_slugs, true)) {
     $selected_category = '';

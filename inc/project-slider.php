@@ -39,20 +39,31 @@ function vita_health_project_slider_query($settings) {
     if ($mode === 'latest') {
         return $query;
     }
-    $taxonomy = get_taxonomy($settings['taxonomy'] ?? '');
+    $taxonomy_name = $settings['taxonomy'] ?? '';
+    // Saved sliders from before Projects received their own taxonomy.
+    $legacy_categories = $taxonomy_name === 'category';
+    $taxonomy = get_taxonomy($legacy_categories ? 'project_category' : $taxonomy_name);
     if (!in_array($mode, ['terms', 'related'], true) || !$taxonomy || !$taxonomy->public || !is_object_in_taxonomy('project', $taxonomy->name)) {
         return null;
     }
     if ($mode === 'related') {
         $current = absint($settings['currentPostId'] ?? (get_queried_object_id() ?: get_the_ID()));
-        $current_type = get_post_type($current);
-        if (!in_array($current_type, ['project', 'post'], true) || !is_object_in_taxonomy($current_type, $taxonomy->name)) {
+        if (get_post_type($current) !== 'project' || !is_object_in_taxonomy('project', $taxonomy->name)) {
             return null;
         }
         $terms = wp_get_object_terms($current, $taxonomy->name, ['fields' => 'ids']);
         $query['post__not_in'] = [$current];
     } else {
         $terms = array_filter(array_map('absint', (array) ($settings['terms'] ?? [])));
+        if ($legacy_categories) {
+            $terms = array_values(array_filter(array_map(static function ($term_id) {
+                $old_term = get_term($term_id, 'category');
+                $new_term = $old_term && !is_wp_error($old_term)
+                    ? get_term_by('slug', $old_term->slug, 'project_category')
+                    : false;
+                return $new_term ? $new_term->term_id : null;
+            }, $terms)));
+        }
     }
     if (is_wp_error($terms) || !$terms) {
         return null;

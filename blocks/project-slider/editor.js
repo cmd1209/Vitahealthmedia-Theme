@@ -20,9 +20,9 @@
               options: [
                 { label: __('All projects', 'vitahealthmedia'), value: 'latest' },
                 { label: __('Selected categories / terms', 'vitahealthmedia'), value: 'terms' },
-                { label: __('Related to this project / article', 'vitahealthmedia'), value: 'related' }
+                { label: __('Related to this project', 'vitahealthmedia'), value: 'related' }
               ], onChange: function (mode) {
-                setAttributes({ mode: mode, taxonomy: attributes.taxonomy || (mode === 'related' ? 'category' : '') });
+                setAttributes({ mode: mode, taxonomy: attributes.taxonomy || (mode === 'related' ? 'project_category' : '') });
               } }),
             attributes.mode !== 'latest' && el(SelectControl, {
               label: __('Project taxonomy', 'vitahealthmedia'), value: attributes.taxonomy,
@@ -35,7 +35,7 @@
               options: taxonomy.terms.map(function (term) { return { label: term.name, value: String(term.id) }; }),
               onChange: function (terms) { setAttributes({ terms: terms.map(Number) }); }
             }),
-            attributes.mode === 'related' && el('p', null, __('Shows projects sharing a category or term with this project or article. The current project is excluded. Assign categories and save to update the preview. On a normal page, use selected terms instead.', 'vitahealthmedia'))
+            attributes.mode === 'related' && el('p', null, __('Shows projects sharing a Leistung with this project. The current project is excluded. Assign Leistungen and save to update the preview. On a normal page, use selected terms instead.', 'vitahealthmedia'))
           )
         ),
         el('div', useBlockProps({ className: 'project-slider-editor' }),
