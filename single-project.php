@@ -11,6 +11,14 @@
         </div>
       <?php endif; ?>
     </article>
+    <?php if (!has_block('vita-health/project-slider', get_the_ID())) :
+        get_template_part('parts/project-slider', null, [
+            'count' => 4,
+            'mode' => 'related',
+            'taxonomy' => 'project_category',
+            'currentPostId' => get_the_ID(),
+        ]);
+    endif; ?>
   <?php endwhile; ?>
   <?php
 $archive_content_page = get_page_by_path('projekt-archiv-inhalt');
