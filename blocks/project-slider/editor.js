@@ -11,7 +11,7 @@
       return el(wp.element.Fragment, null,
         el(InspectorControls, null,
           el(PanelBody, { title: __('Projects query', 'vitahealthmedia') },
-            el(RangeControl, { label: __('Number of projects', 'vitahealthmedia'), min: 1, max: 24, value: attributes.count,
+            el(RangeControl, { label: __('Number of projects', 'vitahealthmedia'), min: attributes.mode === 'related' ? 3 : 1, max: 24, value: attributes.mode === 'related' ? Math.max(3, attributes.count) : attributes.count,
               onChange: function (count) { setAttributes({ count: count }); } }),
             el(SelectControl, { label: __('Order', 'vitahealthmedia'), value: attributes.order,
               options: [{ label: __('Newest first', 'vitahealthmedia'), value: 'DESC' }, { label: __('Oldest first', 'vitahealthmedia'), value: 'ASC' }],
@@ -22,7 +22,7 @@
                 { label: __('Selected categories / terms', 'vitahealthmedia'), value: 'terms' },
                 { label: __('Related to this project', 'vitahealthmedia'), value: 'related' }
               ], onChange: function (mode) {
-                setAttributes({ mode: mode, taxonomy: attributes.taxonomy || (mode === 'related' ? 'project_category' : '') });
+                setAttributes({ mode: mode, taxonomy: attributes.taxonomy || (mode === 'related' ? 'project_category' : ''), count: mode === 'related' ? Math.max(3, attributes.count) : attributes.count });
               } }),
             attributes.mode !== 'latest' && el(SelectControl, {
               label: __('Project taxonomy', 'vitahealthmedia'), value: attributes.taxonomy,

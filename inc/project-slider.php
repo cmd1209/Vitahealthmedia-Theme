@@ -52,7 +52,10 @@ function vita_health_project_slider_query($settings) {
             return null;
         }
         $terms = wp_get_object_terms($current, $taxonomy->name, ['fields' => 'ids']);
-        $query['post__not_in'] = [$current];
+        if (is_wp_error($terms)) {
+            return null;
+        }
+        return vita_health_related_project_slider_query($query, $taxonomy->name, $current, $terms);
     } else {
         $terms = array_filter(array_map('absint', (array) ($settings['terms'] ?? [])));
         if ($legacy_categories) {
@@ -75,6 +78,52 @@ function vita_health_project_slider_query($settings) {
         'operator' => 'IN',
         'include_children' => false,
     ]];
+    return $query;
+}
+
+function vita_health_related_project_slider_query($query, $taxonomy, $current, $terms) {
+    $target_count = max(3, $query['posts_per_page']);
+    $selected_ids = [];
+
+    if ($terms) {
+        $related = new WP_Query(array_merge($query, [
+            'fields' => 'ids',
+            'posts_per_page' => $target_count,
+            'post__not_in' => [$current],
+            'tax_query' => [[
+                'taxonomy' => $taxonomy,
+                'field' => 'term_id',
+                'terms' => $terms,
+                'operator' => 'IN',
+                'include_children' => false,
+            ]],
+        ]));
+        $selected_ids = $related->posts;
+    }
+
+    if (count($selected_ids) < $target_count) {
+        $alternatives = new WP_Query(array_merge($query, [
+            'fields' => 'ids',
+            'posts_per_page' => $target_count - count($selected_ids),
+            'post__not_in' => array_merge([$current], $selected_ids),
+            'tax_query' => $terms ? [[
+                'taxonomy' => $taxonomy,
+                'field' => 'term_id',
+                'terms' => $terms,
+                'operator' => 'NOT IN',
+                'include_children' => false,
+            ]] : [],
+        ]));
+        $selected_ids = array_merge($selected_ids, $alternatives->posts);
+    }
+
+    if (count($selected_ids) < 3) {
+        return null;
+    }
+
+    $query['post__in'] = $selected_ids;
+    $query['posts_per_page'] = count($selected_ids);
+    $query['orderby'] = 'post__in';
     return $query;
 }
 
