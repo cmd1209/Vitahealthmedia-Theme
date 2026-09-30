@@ -6,7 +6,7 @@
   "title": "Partner Logos",
   "category": "design",
   "icon": "images-alt2",
-  "description": "Full-width looping customer logos selected from the Media Library.",
+  "description": "Full-width looping customer logos from the shared Partner Logos list.",
   "textdomain": "vitahealthmedia",
   "attributes": {
     "heading": { "type": "string", "default": "Kunden" },

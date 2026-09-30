@@ -11,7 +11,7 @@
       const width = original.getBoundingClientRect().width;
       if (!width) return;
       track.style.setProperty('--partner-loop-width', width + 'px');
-      // Fill wide screens even when an editor selects only one or two logos.
+      // Fill wide screens even when the shared list has only one or two logos.
       const copies = Math.ceil(viewport.clientWidth / width);
       for (let i = 0; i < copies; i++) {
         const clone = original.cloneNode(true);

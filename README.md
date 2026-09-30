@@ -252,26 +252,21 @@ meaning in the quote.
 
 ## Partner Logos
 
-Also available under **Patterns → Vita Health → Partner Logos** on any page.
-Each insertion creates an independent, editable block with the starter logos.
+All Partner Logos blocks now use one shared list. Editors can open
+**Partnerlogos** in WordPress admin, add images from the Media Library, move them
+up or down, remove them from the carousel, and save. Every instance updates from
+that list. Removing a logo from the list does not delete its Media Library file.
+The seven bundled logos remain the initial list until someone saves a change;
+they can be removed or mixed with uploaded logos. A button on the admin screen
+adds back any missing bundled logos.
 
-Insert **Partner Logos** from the block inserter wherever the customer strip belongs.
-It breaks out of the centered content wrapper to fill the viewport. The heading
-(default: “Kunden”) is editable directly in the block.
-
-The block starts with the seven approved prototype logos, bundled in the theme.
-In its sidebar, choose **Select / edit logos** to replace the starter set with
-images from the WordPress Media Library. Select/upload the desired logos and
-confirm the gallery selection. Use the arrows below each logo to reorder it,
-remove individual logos with ×, or reopen the media picker to edit the selection.
-**Restore starter logos** resets the set. An explicitly empty selection renders
-no section on the frontend.
-
-Use transparent PNG/WebP images with light artwork and meaningful alternative
-text (the customer name). Media Library selections are stored as attachment IDs;
-PHP resolves their current image URLs and alt text on each render and skips
-missing attachments. The bundled starter images do not create Media Library
-records automatically.
+Insert **Partner Logos** from the block inserter or Vita Health patterns wherever
+the strip belongs. Its heading (default: “Kunden”) remains editable per page.
+Existing blocks with an old per-instance logo selection also show the shared
+list after the first shared save; until then, their selections remain intact.
+An empty saved list hides the carousel. Deleted Media Library attachments
+are skipped. Use transparent images with light artwork and set meaningful image
+alternative text in the Media Library. SVG uploads require a sanitizing plugin.
 
 The frontend preserves the prototype's CSS marquee, 42 seconds per loop on desktop
 and 32 seconds on mobile. Small vanilla JavaScript duplicates enough sets to fill

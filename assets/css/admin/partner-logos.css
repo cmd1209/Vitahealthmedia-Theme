@@ -1,0 +1,87 @@
+.vita-partner-logos-admin {
+  max-width: 960px;
+}
+
+.vita-partner-logo-list {
+  display: grid;
+  gap: 8px;
+  margin-block: 24px;
+}
+
+.vita-partner-logo-item {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  min-height: 76px;
+  padding: 10px 12px;
+  margin: 0;
+  border: 1px solid #dcdcde;
+  border-radius: 4px;
+  background: #fff;
+  color: #1d2327;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.vita-partner-logo-item__preview {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 128px;
+  height: 68px;
+  padding: 8px;
+  border-radius: 3px;
+  background: #4c7e64;
+}
+
+.vita-partner-logo-item__preview img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.vita-partner-logo-item__name {
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.vita-partner-logo-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vita-partner-logo-item__actions .button[data-action="up"],
+.vita-partner-logo-item__actions .button[data-action="down"] {
+  min-width: 36px;
+  padding-inline: 6px;
+  font-size: 18px;
+}
+
+.vita-partner-logo-item__actions .button[data-action="remove"] {
+  color: #b32d2e;
+}
+
+@media (max-width: 850px) {
+  .vita-partner-logo-item {
+    grid-template-columns: 128px minmax(0, 1fr);
+  }
+
+  .vita-partner-logo-item__actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .vita-partner-logo-item {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .vita-partner-logo-item__preview {
+    width: 96px;
+    height: 56px;
+  }
+}

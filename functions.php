@@ -4,6 +4,7 @@ require_once get_template_directory() . '/inc/button-block.php';
 require_once get_template_directory() . '/inc/inview.php';
 require_once get_template_directory() . '/inc/hero-video.php';
 require_once get_template_directory() . '/inc/partner-logos.php';
+require_once get_template_directory() . '/inc/partner-logos-admin.php';
 require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/typography.php';
 require_once get_template_directory() . '/inc/post-types.php';

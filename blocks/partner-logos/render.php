@@ -1,19 +1,12 @@
 <?php
-$logos = [];
-if ($attributes['useDefaults'] ?? true) {
-    foreach (['hello' => 'Hello Health', 'kabi' => 'Fresenius Kabi', 'umschau' => 'Apotheken Umschau', 'viactiv' => 'VIACTIV', 'siemens' => 'Siemens Healthineers', 'korian' => 'Korian', 'gesund.de' => 'gesund.de'] as $file => $name) {
-        $logos[] = '<img src="' . esc_url(get_template_directory_uri() . '/assets/images/partner/' . $file . '.png') . '" alt="' . esc_attr($name) . '" width="150" height="75" decoding="async">';
-    }
-} else {
+$logos = vita_health_partner_logo_list();
+if (!vita_health_partner_logos_are_shared() && !($attributes['useDefaults'] ?? true)) {
+    $logos = [];
     foreach (($attributes['logoIds'] ?? []) as $id) {
-        $id = absint($id);
-        if (!$id || !wp_attachment_is_image($id)) {
-            continue;
+        $logo = vita_health_partner_logo_details('media:' . absint($id));
+        if ($logo) {
+            $logos[] = $logo;
         }
-        $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
-        $logos[] = wp_get_attachment_image($id, 'medium', false, [
-            'alt' => $alt ?: get_the_title($id), 'loading' => 'eager', 'decoding' => 'async',
-        ]);
     }
 }
 if (!$logos) {
@@ -28,7 +21,7 @@ $heading_id = wp_unique_id('partner-logos-heading-');
     <div class="partner-logos__track">
       <ul class="partner-logos__set">
         <?php foreach ($logos as $logo) : ?>
-          <li class="partner-logos__item"><?php echo $logo; ?></li>
+          <li class="partner-logos__item"><img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['alt']); ?>" width="150" height="75" decoding="async"></li>
         <?php endforeach; ?>
       </ul>
     </div>
