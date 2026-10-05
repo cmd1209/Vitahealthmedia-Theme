@@ -30,6 +30,18 @@ function vita_health_register_project_categories() {
 }
 add_action('init', 'vita_health_register_project_categories');
 
+function vita_health_redirect_paged_service_archive() {
+    if (!is_tax('project_category') || get_query_var('paged') < 2) {
+        return;
+    }
+    $url = get_term_link(get_queried_object());
+    if (!is_wp_error($url)) {
+        wp_safe_redirect($url, 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'vita_health_redirect_paged_service_archive');
+
 function vita_health_project_icon_options() {
     return [
         'video' => __('Video', 'vitahealthmedia'),
@@ -161,16 +173,15 @@ function vita_health_project_categories() {
 }
 
 function vita_health_render_leistung_grid() {
-    $archive_url = get_post_type_archive_link('project');
     $terms = vita_health_project_categories();
-    if (!$archive_url || !$terms) {
+    if (!$terms) {
         return '';
     }
 
     ob_start();
     echo '<div class="wp-block-group leistung-grid">';
     foreach ($terms as $term) {
-        get_template_part('parts/leistung-card', null, ['term' => $term, 'archive_url' => $archive_url]);
+        get_template_part('parts/leistung-card', null, ['term' => $term]);
     }
     echo '</div>';
     return ob_get_clean();

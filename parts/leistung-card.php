@@ -1,7 +1,10 @@
 <?php
 $term = $args['term'] ?? null;
-$archive_url = $args['archive_url'] ?? '';
-if (!$term instanceof WP_Term || !$archive_url) {
+if (!$term instanceof WP_Term) {
+    return;
+}
+$url = get_term_link($term);
+if (is_wp_error($url)) {
     return;
 }
 
@@ -16,9 +19,8 @@ if ($icon_url) {
     $icon_markup = $icon_markup ? str_replace('fill="#D5C7FF"', 'fill="currentColor"', $icon_markup) : '';
     $icon_markup = preg_replace('/\s+id="[^"]*"/', '', $icon_markup);
 }
-$url = add_query_arg('project_category', $term->slug, $archive_url);
 ?>
-<a class="leistung-card" href="<?php echo esc_url($url); ?>" aria-label="<?php echo esc_attr(sprintf(__('Projekte: %s', 'vitahealthmedia'), $term->name)); ?>">
+<a class="leistung-card" href="<?php echo esc_url($url); ?>" aria-label="<?php echo esc_attr($term->name); ?>">
   <?php if ($icon_markup) : ?>
     <span class="leistung-card__icon" aria-hidden="true"><?php echo $icon_markup; // Trusted SVG from the theme's fixed icon list. ?></span>
   <?php endif; ?>

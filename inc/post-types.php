@@ -27,16 +27,22 @@ function vita_register_project_post_type() {
 
 add_action('init', 'vita_register_project_post_type');
 
+function vita_health_selected_project_category_slug() {
+    if (!isset($_GET['project_category']) || !is_string($_GET['project_category'])) {
+        return '';
+    }
+    $slug = sanitize_title(wp_unslash($_GET['project_category']));
+    return $slug && get_term_by('slug', $slug, 'project_category') ? $slug : '';
+}
+
 function vita_project_archive_query($query) {
     if (is_admin() || !$query->is_main_query() || !$query->is_post_type_archive('project')) {
         return;
     }
 
     $query->set('posts_per_page', 6);
-    $category = isset($_GET['project_category']) && is_string($_GET['project_category'])
-        ? sanitize_title(wp_unslash($_GET['project_category']))
-        : '';
-    if ($category && get_term_by('slug', $category, 'project_category')) {
+    $category = vita_health_selected_project_category_slug();
+    if ($category) {
         $query->set('tax_query', [[
             'taxonomy' => 'project_category',
             'field' => 'slug',

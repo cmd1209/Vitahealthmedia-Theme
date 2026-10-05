@@ -9,6 +9,7 @@ require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/typography.php';
 require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/project-categories.php';
+require_once get_template_directory() . '/inc/service-pages.php';
 require_once get_template_directory() . '/inc/gradients.php';
 require_once get_template_directory() . '/inc/project-cta.php';
 require_once get_template_directory() . '/inc/project-slider.php';
@@ -40,7 +41,20 @@ function vita_health_navigation_contact_icon($title, $item, $args) {
 add_filter('nav_menu_item_title', 'vita_health_navigation_contact_icon', 10, 3);
 
 function vita_health_footer_link_attributes($attributes, $item, $args) {
-    if ($args->theme_location === 'footer-services' && isset($attributes['href']) && strpos($attributes['href'], '#') === 0) {
+    if ($args->theme_location !== 'footer-services') {
+        return $attributes;
+    }
+
+    $term = get_term_by('name', trim($item->title), 'project_category');
+    if ($term) {
+        $url = get_term_link($term);
+        if (!is_wp_error($url)) {
+            $attributes['href'] = $url;
+            return $attributes;
+        }
+    }
+
+    if (isset($attributes['href']) && strpos($attributes['href'], '#') === 0) {
         $attributes['href'] = home_url('/') . $attributes['href'];
     }
     return $attributes;
@@ -71,6 +85,8 @@ function vita_health_enqueue_assets() {
             ['vita-health-project-slider'],
             filemtime(get_template_directory() . '/assets/css/components/project-archive.css')
         );
+    }
+    if (is_post_type_archive('project')) {
         wp_enqueue_script(
             'vita-health-project-archive',
             get_template_directory_uri() . '/assets/js/project-archive.js',
@@ -80,7 +96,7 @@ function vita_health_enqueue_assets() {
         );
     }
 
-    if (is_singular('project')) {
+    if (is_singular(['project', 'service_page']) || is_tax('project_category')) {
         wp_enqueue_style(
             'vita-health-project-hero',
             get_template_directory_uri() . '/assets/css/components/project-hero.css',

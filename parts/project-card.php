@@ -2,7 +2,6 @@
 $title_id = $args['title_id'] ?? wp_unique_id('project-title-');
 $variant = vita_health_get_project_cta_variant(get_the_ID());
 $heading_tag = ($args['heading_tag'] ?? 'h2') === 'h3' ? 'h3' : 'h2';
-$category = $args['category'] ?? '';
 $button_size = ($args['button_size'] ?? 'small') === 'default' ? 'button--default button--small-mobile' : 'button--small';
 $excerpt = has_excerpt() ? get_the_excerpt() : '';
 $image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);

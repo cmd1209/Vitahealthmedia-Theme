@@ -1,15 +1,6 @@
 <?php
 get_header();
-
-$archive_url = get_post_type_archive_link('project');
-$selected_category = isset($_GET['project_category']) && is_string($_GET['project_category'])
-    ? sanitize_title(wp_unslash($_GET['project_category']))
-    : '';
-$categories = vita_health_project_categories();
-$valid_slugs = wp_list_pluck($categories, 'slug');
-if (!in_array($selected_category, $valid_slugs, true)) {
-    $selected_category = '';
-}
+$selected_category = vita_health_selected_project_category_slug();
 ?>
 <main id="main-content" class="project-archive">
   <header class="project-archive__hero">
@@ -25,14 +16,7 @@ if (!in_array($selected_category, $valid_slugs, true)) {
 
   <p class="project-archive__status" role="status" aria-live="polite" aria-atomic="true"></p>
   <div class="content-wrapper project-archive__content" tabindex="-1">
-    <nav class="project-archive__filters" aria-label="<?php esc_attr_e('Projekte filtern', 'vitahealthmedia'); ?>">
-      <a class="project-archive__filter<?php echo $selected_category === '' ? ' is-active' : ''; ?>" href="<?php echo esc_url($archive_url); ?>"<?php echo $selected_category === '' ? ' aria-current="page"' : ''; ?>>Alle <?php echo wp_count_posts('project')->publish; ?> Projekte</a>
-      <?php foreach ($categories as $category) :
-          $active = $selected_category === $category->slug;
-      ?>
-        <a class="project-archive__filter<?php echo $active ? ' is-active' : ''; ?>" href="<?php echo esc_url(add_query_arg('project_category', $category->slug, $archive_url)); ?>"<?php echo $active ? ' aria-current="page"' : ''; ?>><?php echo esc_html($category->name); ?></a>
-      <?php endforeach; ?>
-    </nav>
+    <?php get_template_part('parts/project-category-nav', null, ['selected_slug' => $selected_category]); ?>
 
     <?php if (have_posts()) : ?>
       <div class="project-archive__grid">

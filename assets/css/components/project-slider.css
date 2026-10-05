@@ -76,8 +76,7 @@
 }
 
 .project-card__content .project-card__title,
-.project-card__content .project-card__excerpt,
-.project-card__content .project-card__category {
+.project-card__content .project-card__excerpt {
   margin: 0;
   width: 100%;
   color: inherit;

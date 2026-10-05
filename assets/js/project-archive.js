@@ -74,7 +74,6 @@
     if (url.origin !== window.location.origin || link.target || link.hasAttribute('download')) {
       return;
     }
-
     event.preventDefault();
     loadPage(url.href, link.closest('.project-archive__pagination') ? 'page' : 'filter');
   });

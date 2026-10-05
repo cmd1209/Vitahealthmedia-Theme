@@ -13,27 +13,15 @@ if (!$projects->have_posts()) {
     return;
 }
 $section_id = wp_unique_id('project-slider-');
-$taxonomies = array_filter(get_object_taxonomies('project', 'objects'), static function ($taxonomy) {
-    return $taxonomy->public;
-});
 ?>
 <section class="project-slider alignfull" aria-label="<?php esc_attr_e('Projekte', 'vitahealthmedia'); ?>">
   <div class="project-slider__viewport" id="<?php echo esc_attr($section_id); ?>-viewport" tabindex="0" role="group" aria-label="<?php esc_attr_e('Projekte durchblättern', 'vitahealthmedia'); ?>">
     <div class="project-slider__track">
       <?php while ($projects->have_posts()) : $projects->the_post();
           $title_id = $section_id . '-project-' . get_the_ID();
-          $category = '';
-          foreach ($taxonomies as $taxonomy) {
-              $terms = get_the_terms(get_the_ID(), $taxonomy->name);
-              if ($terms && !is_wp_error($terms)) {
-                  $category = $terms[0]->name;
-                  break;
-              }
-          }
           get_template_part('parts/project-card', null, [
               'title_id' => $title_id,
               'heading_tag' => 'h3',
-              'category' => $category,
               'button_size' => 'default',
           ]);
       ?>
