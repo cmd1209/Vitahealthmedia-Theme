@@ -51,7 +51,7 @@
   gap: var(--gap-2xl) var(--gap-md);
   width: 100%;
   max-width: var(--content-default);
-  padding-top: var(--padding-lg);
+  padding-block: var(--padding-lg);
 }
 
 .leistung-card {

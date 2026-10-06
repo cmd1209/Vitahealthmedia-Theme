@@ -68,32 +68,32 @@
   --vita-gradient-ink: var(--color-text-inverse);
 }
 
-.vita-gradient--lavender {
+:is(.vita-gradient--lavender, .is-style-vita-gradient-lavender) {
   --vita-gradient: var(--vita-gradient-lavender);
   --vita-gradient-overlay: var(--vita-gradient-overlay-lavender);
 }
 
-.vita-gradient--coral {
+:is(.vita-gradient--coral, .is-style-vita-gradient-coral) {
   --vita-gradient: var(--vita-gradient-coral);
   --vita-gradient-overlay: var(--vita-gradient-overlay-coral);
 }
 
-.vita-gradient--terracotta {
+:is(.vita-gradient--terracotta, .is-style-vita-gradient-terracotta) {
   --vita-gradient: var(--vita-gradient-terracotta);
   --vita-gradient-overlay: var(--vita-gradient-overlay-terracotta);
 }
 
-.vita-gradient--evergreen {
+:is(.vita-gradient--evergreen, .is-style-vita-gradient-evergreen) {
   --vita-gradient: var(--vita-gradient-evergreen);
   --vita-gradient-overlay: var(--vita-gradient-overlay-evergreen);
 }
 
-.vita-gradient--sage {
+:is(.vita-gradient--sage, .is-style-vita-gradient-sage) {
   --vita-gradient: var(--vita-gradient-sage);
   --vita-gradient-overlay: var(--vita-gradient-overlay-sage);
 }
 
-.vita-gradient--mint {
+:is(.vita-gradient--mint, .is-style-vita-gradient-mint) {
   --vita-gradient: var(--vita-gradient-mint);
   --vita-gradient-overlay: var(--vita-gradient-overlay-mint);
 }

@@ -8,16 +8,16 @@
   row-gap: 0;
 }
 
-.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
-.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
-.editor-styles-wrapper .is-root-container > :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor) {
+.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
+.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
+.editor-styles-wrapper .is-root-container > :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor) {
   width: 100%;
   max-width: none;
   margin-inline: 0;
   margin-block: 0;
 }
 
-.editor-styles-wrapper :is(.hero-video, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor).wp-block {
+.editor-styles-wrapper :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor).wp-block {
   width: 100%;
   max-width: none;
   margin-inline: 0;
@@ -37,6 +37,59 @@
 .editor-styles-wrapper .contact__container.wp-block {
   width: 100%;
   max-width: none;
+}
+
+/* Keep the editable Cover groups at the same widths as the published hero.
+   Gutenberg's block wrappers and Cover alignment otherwise center the title
+   and allow the lead to stretch across the full canvas. */
+.editor-styles-wrapper .page-hero .wp-align-wrapper:has(> :is(.page-hero__inner, .page-hero__content, .page-hero__title, .page-hero__lead)) {
+  display: contents;
+}
+
+.editor-styles-wrapper .page-hero .page-hero__inner.wp-block-group {
+  width: calc(100% - 2 * var(--page-padding-desktop));
+  max-width: var(--content-default);
+  margin-inline: auto;
+}
+
+.editor-styles-wrapper .page-hero .page-hero__content.wp-block-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap-xl);
+  width: 100%;
+  max-width: var(--content-narrow);
+  margin-inline: 0;
+  text-align: left;
+}
+
+.editor-styles-wrapper .page-hero .page-hero__content > .wp-block-group__inner-container {
+  width: 100%;
+  max-width: var(--content-narrow);
+  text-align: left;
+}
+
+.editor-styles-wrapper .page-hero :is(.page-hero__title, .page-hero__lead) {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  text-align: left;
+}
+
+@media (max-width: 960px) {
+  .editor-styles-wrapper .page-hero .page-hero__inner.wp-block-group {
+    width: calc(100% - 2 * var(--page-padding-mobile));
+  }
+}
+
+@media (max-width: 768px) {
+  .editor-styles-wrapper .page-hero .page-hero__inner.wp-block-group {
+    width: calc(100% - 2 * var(--padding-lg));
+  }
+
+  .editor-styles-wrapper .page-hero .page-hero__content.wp-block-group {
+    gap: var(--gap-lg);
+  }
 }
 
 /* The PHP preview retains its frontend layout within the block's canvas width. */
