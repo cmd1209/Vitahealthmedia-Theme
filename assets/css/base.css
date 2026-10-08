@@ -29,7 +29,7 @@ html:has(> body:not(.wp-admin, .editor-styles-wrapper)) {
 }
 
 /* Shared viewport breakout for full-width theme sections. */
-body:not(.wp-admin):has(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider, .project-hero) { overflow-x: clip; }
+body:not(.wp-admin):has(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider, .project-hero, .team-section) { overflow-x: clip; }
 
 .hero-video,
 .page-hero.alignfull,
@@ -38,6 +38,7 @@ body:not(.wp-admin):has(.hero-video, .page-hero, .quote-section, .leistung-secti
 .partner-logos.alignfull,
 .contact-section.alignfull,
 .project-slider.alignfull,
+.team-section.alignfull,
 .project-hero.alignfull {
   width: 100vw;
   margin-inline: calc(50% - 50vw);

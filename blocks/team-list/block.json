@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/team-list",
+  "title": "Team List",
+  "category": "design",
+  "icon": "groups",
+  "description": "All published team members, ordered by their Order field.",
+  "textdomain": "vitahealthmedia",
+  "supports": { "html": false, "align": false },
+  "editorScript": "vita-health-team-editor"
+}

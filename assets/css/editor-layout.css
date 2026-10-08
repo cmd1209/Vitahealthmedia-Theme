@@ -8,16 +8,16 @@
   row-gap: 0;
 }
 
-.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
-.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor)),
-.editor-styles-wrapper .is-root-container > :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor) {
+.editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor, .team-section)),
+.editor-styles-wrapper .is-root-container > .wp-block[data-align]:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor, .team-section)),
+.editor-styles-wrapper .is-root-container > :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor, .team-section) {
   width: 100%;
   max-width: none;
   margin-inline: 0;
   margin-block: 0;
 }
 
-.editor-styles-wrapper :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor).wp-block {
+.editor-styles-wrapper :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor, .team-section).wp-block {
   width: 100%;
   max-width: none;
   margin-inline: 0;

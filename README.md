@@ -132,6 +132,64 @@ On a draft page:
 
 The next natural component is the introductory Mission section targeted by the
 hero's first CTA, using the same controlled editing approach.
+## Team landing page
+
+Build the page with **Patterns → Vita Health → Team Section**. It includes an
+editable introduction and the dynamic **Team List** block on the lavender/V
+background. Add a Page Hero pattern above it when you need a visible page title.
+The pattern works on any normal Page; no special template is required.
+
+The block inserter also offers **Team List**, which automatically displays all
+published members, and **Team Card**, where you select one published member in
+the block or sidebar. Edit member details under **Team**; both blocks display
+a server-rendered preview and update from the saved member records. An empty
+list or unselected/unavailable member shows an editor instruction and renders
+no output on the frontend.
+
+Each member uses the shared in-view reveal animation once as it enters the
+viewport. It respects reduced-motion preferences and remains visible without
+JavaScript. Select Team List or Team Card and turn off **Animation → Reveal on
+scroll** to disable it for that block.
+
+The original **Team** page template (also automatic for slug `team`) still appends
+the member list for pages containing only introductory content. When Team blocks
+are inserted, including through a synced pattern, the template renders the page's
+blocks directly without appending another list or wrapping the entire page in
+the Team background.
+
+Manage people under **Team → Add New**. The title is the member's name, the
+Featured Image is their Media Library portrait, and **Teammitglied – Details**
+contains job title, quote, optional email and optional LinkedIn URL. Job titles
+support line breaks. Include quotation marks in the quote. Select words and use
+**Formate → Koralle hervorheben** for the approved coral treatment.
+
+Use **Attributes → Order** to set display order (lowest first; equal values sort
+by name). Only published members appear. Empty optional fields render no links;
+missing portraits or quotes are omitted. Members have no individual public
+profile pages. The landing page queries all members on each request. No plugin,
+build step or rewrite flush is needed. Page/member content is not auto-populated.
+
+`inc/team.php` owns the post type, sanitized metadata and native edit fields.
+`page-team.php` composes `parts/team-list.php` and `parts/team-card.php`. The scoped
+`assets/css/components/team.css` uses existing tokens and the exact exported
+`assets/images/team-v.svg`; responsive Media Library images receive the Figma
+coral-to-purple overlay. Desktop alternates sides; mobile stacks each portrait
+before its quote.
+
+## Page Hero image source
+
+Insert **Patterns → Vita Health → Page Hero**, then set the Page's **Featured
+Image**. The hero uses it automatically and follows future replacements in both
+the editor and frontend. Without a Featured Image, the selected gradient remains.
+The heading, introduction and gradient are still edited in the hero block.
+
+This uses the native Cover block's **Use featured image** option. Selecting a
+different image directly in the Cover remains an intentional override; turn
+**Use featured image** back on to follow the Page again. Existing empty Page
+Heroes also receive this default without rewriting saved page content. Existing
+explicit image/video choices and explicitly disabled featured-image settings
+are preserved. Other Cover blocks keep WordPress's standard behavior.
+
 # Shared typography and editor content
 
 New native headings, paragraphs, lists, and quotes automatically use the Vita

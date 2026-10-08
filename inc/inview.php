@@ -15,6 +15,11 @@ function vita_health_render_inview_block($content, $block) {
         return $content;
     }
 
+    // Team members reveal individually; do not also animate the list wrapper.
+    if ($reveal && in_array($block['blockName'], ['vita-health/team-list', 'vita-health/team-card'], true)) {
+        return $content;
+    }
+
     $html = new WP_HTML_Tag_Processor($content);
     if (!$html->next_tag()) {
         return $content;

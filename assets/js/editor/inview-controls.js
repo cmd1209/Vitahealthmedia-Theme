@@ -3,7 +3,7 @@
   const __ = wp.i18n.__;
   const { InspectorControls } = wp.blockEditor;
   const { PanelBody, ToggleControl } = wp.components;
-  const defaultReveal = /(?:^|\s)(?:leistung-card|quote-section__content|contact)(?=\s|$)/;
+  const defaultReveal = /(?:^|\s)(?:leistung-card|quote-section__content|contact|team-card)(?=\s|$)/;
 
   wp.hooks.addFilter('editor.BlockEdit', 'vita-health/inview-controls', function (BlockEdit) {
     return function (props) {
@@ -15,7 +15,9 @@
       const setting = props.attributes.vitaRevealOnScroll;
       const checked = typeof setting === 'boolean'
         ? setting
-        : defaultReveal.test(props.attributes.className || '');
+        : defaultReveal.test(props.attributes.className || '')
+          || props.name === 'vita-health/team-list'
+          || props.name === 'vita-health/team-card';
 
       return el(wp.element.Fragment, null,
         el(BlockEdit, props),

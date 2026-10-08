@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/team-card",
+  "title": "Team Card",
+  "category": "design",
+  "icon": "admin-users",
+  "description": "One selected published team member.",
+  "textdomain": "vitahealthmedia",
+  "attributes": { "memberId": { "type": "number", "default": 0 } },
+  "supports": { "html": false, "align": false },
+  "editorScript": "vita-health-team-editor"
+}

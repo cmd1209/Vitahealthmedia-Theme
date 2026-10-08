@@ -1,5 +1,5 @@
 (function () {
-  const elements = document.querySelectorAll('.leistung-card, .quote-section__content, .contact, .vita-reveal');
+  const elements = document.querySelectorAll('.leistung-card, .quote-section__content, .contact, .team-card, .vita-reveal');
   if (!elements.length || !('IntersectionObserver' in window)) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
