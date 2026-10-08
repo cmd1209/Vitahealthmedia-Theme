@@ -31,7 +31,7 @@
 .page-hero__content > .wp-block-group__inner-container {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xl);
+  gap: var(--gap-sm);
   max-width: var(--content-narrow);
   text-align: left;
 }
@@ -66,7 +66,7 @@
 
   .page-hero__content,
   .page-hero__content > .wp-block-group__inner-container {
-    gap: var(--gap-lg);
+    gap: var(--gap-sm);
   }
 
   .page-hero__title {

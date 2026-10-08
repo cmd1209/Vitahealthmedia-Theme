@@ -39,7 +39,7 @@
 .project-archive__intro {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xl);
+  gap: var(--gap-sm);
   max-width: var(--content-narrow);
 }
 
@@ -179,7 +179,7 @@
   }
 
   .project-archive__intro {
-    gap: var(--gap-xl);
+    gap: var(--gap-sm);
   }
 
   .project-archive__intro p {

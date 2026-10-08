@@ -12,7 +12,7 @@
 }
 
 .project-page__content {
-  padding-top: var(--padding-xl);
+  padding-top: var(--padding-3xl);
 }
 
 .project-hero__image,
@@ -41,7 +41,7 @@
 .project-hero__content {
   display: flex;
   flex-direction: column;
-  gap: var(--gap-xl);
+  gap: var(--gap-sm);
   max-width: var(--content-narrow);
 }
 
@@ -69,7 +69,7 @@
   }
 
   .project-hero__content {
-    gap: var(--gap-lg);
+    gap: var(--gap-sm);
   }
 
   .project-hero__title {

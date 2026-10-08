@@ -51,7 +51,7 @@
   gap: var(--gap-2xl) var(--gap-md);
   width: 100%;
   max-width: var(--content-default);
-  padding-block: var(--padding-lg);
+  padding-block: var(--padding-3xl);
 }
 
 .leistung-card {
@@ -134,6 +134,7 @@
   .leistung-grid {
     grid-template-columns: minmax(0, 1fr);
     row-gap: var(--gap-lg);
+    padding-block: var(--padding-2xl);
   }
   .leistung-card {
     flex-direction: row;
