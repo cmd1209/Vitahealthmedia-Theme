@@ -47,8 +47,9 @@ if (!empty($args['is_block'])) {
   </div>
 
   <?php if ($video_url) : ?>
-    <button class="button button--primary button--small hero-video__toggle" type="button" hidden data-pause-label="<?php esc_attr_e('Video pausieren', 'vitahealthmedia'); ?>" data-play-label="<?php esc_attr_e('Video abspielen', 'vitahealthmedia'); ?>">
-      <?php esc_html_e('Video pausieren', 'vitahealthmedia'); ?>
+    <button class="button hero-video__toggle" type="button" hidden aria-label="<?php esc_attr_e('Video pausieren', 'vitahealthmedia'); ?>" data-pause-label="<?php esc_attr_e('Video pausieren', 'vitahealthmedia'); ?>" data-play-label="<?php esc_attr_e('Video abspielen', 'vitahealthmedia'); ?>">
+      <span class="button__icon hero-video__pause-icon" aria-hidden="true"><i data-lucide="pause"></i></span>
+      <span class="button__icon hero-video__play-icon" aria-hidden="true" hidden><i data-lucide="play"></i></span>
     </button>
   <?php endif; ?>
 </section>

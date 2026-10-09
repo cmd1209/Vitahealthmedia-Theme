@@ -5,6 +5,8 @@
     const video = hero.querySelector('.hero-video__media');
     const toggle = hero.querySelector('.hero-video__toggle');
     if (!video || !toggle) return;
+    const pauseIcon = toggle.querySelector('.hero-video__pause-icon');
+    const playIcon = toggle.querySelector('.hero-video__play-icon');
 
     let manuallyPaused = false;
     const play = () => {
@@ -22,7 +24,11 @@
       else play();
     };
     const updateLabel = () => {
-      toggle.textContent = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
+      const label = video.paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
+      toggle.setAttribute('aria-label', label);
+      toggle.setAttribute('title', label);
+      if (pauseIcon) pauseIcon.hidden = video.paused;
+      if (playIcon) playIcon.hidden = !video.paused;
     };
 
     video.addEventListener('play', updateLabel);

@@ -49,12 +49,29 @@
 .hero-video__buttons > .wp-block-buttons { gap: var(--gap-sm); }
 
 .hero-video__toggle {
+  --vita-button-background: transparent;
+  --vita-button-hover: color-mix(in srgb, var(--color-text-inverse) 15%, transparent);
+  --vita-button-label: var(--color-text-inverse);
+  --vita-button-radius: var(--radius-pill);
   position: absolute;
   z-index: 1;
   right: var(--padding-lg);
   bottom: var(--padding-md);
+  box-sizing: border-box;
+  width: var(--size-2xl);
+  height: var(--size-2xl);
+  padding: var(--padding-xs);
 }
 .hero-video__toggle[hidden] { display: none; }
+
+.hero-video__toggle .button__icon[hidden] {
+  display: none;
+}
+
+.hero-video__toggle .button__icon svg {
+  width: var(--size-lg);
+  height: var(--size-lg);
+}
 
 @media (max-width: 768px) {
   .hero-video__inner { width: calc(100% - 2 * var(--padding-lg)); }
