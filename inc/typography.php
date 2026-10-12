@@ -45,3 +45,9 @@ function vita_health_typography_editor_styles() {
     wp_enqueue_style('vita-health-editor-layout', get_template_directory_uri() . '/assets/css/editor-layout.css', ['vita-health-tokens'], filemtime(get_template_directory() . '/assets/css/editor-layout.css'));
 }
 add_action('enqueue_block_assets', 'vita_health_typography_editor_styles', 5);
+
+function vita_health_content_spacing_styles() {
+    wp_enqueue_style('vita-health-content-spacing', get_template_directory_uri() . '/assets/css/content-spacing.css',
+        ['vita-health-typography'], filemtime(get_template_directory() . '/assets/css/content-spacing.css'));
+}
+add_action('enqueue_block_assets', 'vita_health_content_spacing_styles');

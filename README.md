@@ -192,6 +192,19 @@ are preserved. Other Cover blocks keep WordPress's standard behavior.
 
 # Shared typography and editor content
 
+Ordinary content blocks use shared spacing in both the editor and frontend:
+24px between blocks, 48px before a heading, and 16px after a heading. This covers
+Pages, project/service content, homepage content and archive extra content.
+The first block has no leading margin. Images, lists, quotes, buttons and Groups
+participate along with paragraphs. Nested components keep their own layout;
+Groups and Columns retain their native block-gap controls. Explicit inline
+margins override the defaults. Full-width sections and Spacer blocks own their
+spacing, so the defaults do not add another gap around them.
+
+`assets/css/content-spacing.css` targets direct siblings of the content wrappers
+and the editor root. Add `content-flow` to another editorial wrapper if needed;
+do not apply spacing to every descendant with a universal descendant selector.
+
 New native headings, paragraphs, lists, and quotes automatically use the Vita
 type system in `assets/css/typography.css`. Editors can duplicate an existing
 page and add normal Gutenberg content without adding CSS classes. Heading

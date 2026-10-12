@@ -1,0 +1,27 @@
+/* Editorial flow only: direct blocks, never descendants inside components.
+   Full-width sections own their spacing; Spacer blocks remain explicit gaps.
+   :has() handles Gutenberg's alignment wrappers as well as direct blocks. */
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow, .editor-styles-wrapper .is-root-container)
+  > :where(:not(.alignfull, .hero-video, .wp-block-spacer, [hidden], :has(> .alignfull), :has(> .hero-video), :has(> .wp-block-spacer))) {
+  margin-block: 0;
+}
+
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow, .editor-styles-wrapper .is-root-container)
+  > :where(:not(.alignfull, .hero-video, .wp-block-spacer, [hidden], :has(> .alignfull), :has(> .hero-video), :has(> .wp-block-spacer)))
+  + :where(:not(.alignfull, .hero-video, .wp-block-spacer, [hidden], :has(> .alignfull), :has(> .hero-video), :has(> .wp-block-spacer))) {
+  margin-block-start: var(--gap-lg);
+}
+
+/* Keep a heading connected to the content that follows it. */
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow, .editor-styles-wrapper .is-root-container)
+  > :where(h1, h2, h3, h4, h5, h6, .wp-align-wrapper:has(> :is(h1, h2, h3, h4, h5, h6)))
+  + :where(:not(.alignfull, .hero-video, .wp-block-spacer, [hidden], :has(> .alignfull), :has(> .hero-video), :has(> .wp-block-spacer))) {
+  margin-block-start: var(--gap-md);
+}
+
+/* A new heading starts a topic; the first block never gets a leading gap. */
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow, .editor-styles-wrapper .is-root-container)
+  > :where(:not(.alignfull, .hero-video, .wp-block-spacer, [hidden], :has(> .alignfull), :has(> .hero-video), :has(> .wp-block-spacer)))
+  + :where(h1, h2, h3, h4, h5, h6, .wp-align-wrapper:has(> :is(h1, h2, h3, h4, h5, h6))) {
+  margin-block-start: var(--gap-2xl);
+}

@@ -21,7 +21,7 @@ $block_page = vita_health_has_team_block(get_post_field('post_content', get_quer
     <h1 class="team-section__title"><?php the_title(); ?></h1>
     <div class="team-section__inner">
       <?php if (trim(get_the_content()) !== '') : ?>
-        <div class="team-section__intro lead">
+        <div class="team-section__intro lead content-flow">
           <?php the_content(); ?>
           <?php wp_link_pages(); ?>
         </div>
