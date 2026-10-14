@@ -192,6 +192,19 @@ are preserved. Other Cover blocks keep WordPress's standard behavior.
 
 # Shared typography and editor content
 
+Select **Large** on a normal Image block to fill its available content width
+(1180px maximum in the standard wrapper, smaller in a column or on mobile).
+Linked and centered Large images also fill that space. Manually resized images,
+floated images, and other size choices retain their normal sizing.
+
+`inc/media.php` registers the theme's Large image size at 1180px wide with no
+height limit or cropping, overriding the built-in size while this theme is
+active. It also matches the native editor insertion constraint. This affects
+newly generated files; existing Large files stay at their previous resolution
+until thumbnails are regenerated. The original must be wide enough to generate
+an 1180px version. `assets/css/content-images.css` shares the responsive display
+rules between the frontend and editor.
+
 Ordinary content blocks use shared spacing in both the editor and frontend:
 24px between blocks, 48px before a heading, and 16px after a heading. This covers
 Pages, project/service content, homepage content and archive extra content.

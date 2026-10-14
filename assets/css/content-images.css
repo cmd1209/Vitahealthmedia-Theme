@@ -1,0 +1,20 @@
+/* Large fills its own content block or column, including linked images.
+   Explicit resizing and floated images retain the editor's chosen dimensions. */
+:where(body:not(.wp-admin) main, .editor-styles-wrapper)
+  .wp-block-image.size-large:not(.is-resized, .alignleft, .alignright) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+:where(body:not(.wp-admin) main, .editor-styles-wrapper)
+  .wp-block-image.size-large:not(.is-resized, .alignleft, .alignright) > a {
+  display: block;
+  width: 100%;
+}
+
+:where(body:not(.wp-admin) main, .editor-styles-wrapper)
+  .wp-block-image.size-large:not(.is-resized, .alignleft, .alignright) img {
+  width: 100%;
+  height: auto;
+}

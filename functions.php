@@ -8,6 +8,7 @@ require_once get_template_directory() . '/inc/partner-logos-admin.php';
 require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/page-hero.php';
 require_once get_template_directory() . '/inc/typography.php';
+require_once get_template_directory() . '/inc/media.php';
 require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/team.php';
 require_once get_template_directory() . '/inc/project-categories.php';
