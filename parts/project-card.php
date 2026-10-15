@@ -5,6 +5,8 @@ $heading_tag = ($args['heading_tag'] ?? 'h2') === 'h3' ? 'h3' : 'h2';
 $button_size = ($args['button_size'] ?? 'small') === 'default' ? 'button--default button--small-mobile' : 'button--small';
 $excerpt = has_excerpt() ? get_the_excerpt() : '';
 $image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true);
+$categories = get_the_terms(get_the_ID(), 'project_category');
+$category_label = !is_wp_error($categories) && $categories ? implode(', ', wp_list_pluck($categories, 'name')) : '';
 ?>
 <article class="project-card <?php echo esc_attr(vita_health_gradient_class(get_the_ID())); ?>">
   <a class="project-card__link" href="<?php the_permalink(); ?>" aria-labelledby="<?php echo esc_attr($title_id); ?>">
@@ -19,6 +21,9 @@ $image_alt = get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', 
     </div>
     <div class="project-card__overlay" aria-hidden="true"></div>
     <div class="project-card__content">
+      <?php if ($category_label) : ?>
+        <p class="project-card__category label"><?php echo esc_html($category_label); ?></p>
+      <?php endif; ?>
       <<?php echo $heading_tag; ?> class="project-card__title" id="<?php echo esc_attr($title_id); ?>"><?php the_title(); ?></<?php echo $heading_tag; ?>>
       <?php if ($excerpt) : ?>
         <p class="project-card__excerpt"><?php echo esc_html(wp_strip_all_tags($excerpt)); ?></p>

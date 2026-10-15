@@ -75,6 +75,7 @@
   width: 80%;
 }
 
+.project-card__content .project-card__category,
 .project-card__content .project-card__title,
 .project-card__content .project-card__excerpt {
   margin: 0;
