@@ -1,11 +1,39 @@
 /* Full-width sections use the editor canvas as their viewport. WordPress may
    wrap blocks in .wp-align-wrapper, whose default maximum width is 840px. */
 .editor-styles-wrapper {
+  --editor-content-padding: var(--page-padding-desktop);
   padding-inline: 0;
 }
 
 .editor-styles-wrapper .is-root-container {
   row-gap: 0;
+}
+
+/* Ordinary blocks share the frontend's content measure and gutters. Large
+   images fill this wrapper, rather than the entire Gutenberg canvas. */
+.editor-styles-wrapper .editor-post-title,
+.editor-styles-wrapper .is-root-container
+  > .wp-block.wp-block-image:where(:not(.alignfull, [data-align="full"], .is-resized, .alignleft, .alignright)),
+.editor-styles-wrapper .is-root-container
+  > :is(.wp-block, .wp-align-wrapper):where(:not(.alignfull, [data-align="full"], .is-resized, .alignleft, .alignright, :has(> .alignfull), :has(> [data-align="full"]))) {
+  box-sizing: border-box;
+  width: calc(100% - 2 * var(--editor-content-padding));
+  max-width: var(--content-default);
+  margin-inline: auto;
+}
+
+/* Alignment wrappers already supply the measure; their blocks need no second
+   set of gutters. Nested Groups/Columns keep their own layout controls. */
+.editor-styles-wrapper .is-root-container > .wp-align-wrapper
+  > .wp-block:not(.is-resized, .alignleft, .alignright) {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 960px) {
+  .editor-styles-wrapper {
+    --editor-content-padding: var(--page-padding-mobile);
+  }
 }
 
 .editor-styles-wrapper .wp-align-wrapper:has(> :is(.hero-video, .page-hero, .quote-section, .leistung-section, .partner-logos, .contact-section, .project-slider-editor, .team-section)),

@@ -197,6 +197,12 @@ Select **Large** on a normal Image block to fill its available content width
 Linked and centered Large images also fill that space. Manually resized images,
 floated images, and other size choices retain their normal sizing.
 
+The Gutenberg canvas constrains ordinary top-level blocks and its document title
+to the same 1180px maximum and responsive gutters as the frontend. This includes
+WordPress alignment wrappers, so an image and the surrounding text line up.
+Full-width Vita sections keep using the canvas width; nested blocks retain their
+Group/Column layout rather than receiving another set of page gutters.
+
 `inc/media.php` registers the theme's Large image size at 1180px wide with no
 height limit or cropping, overriding the built-in size while this theme is
 active. It also matches the native editor insertion constraint. This affects
