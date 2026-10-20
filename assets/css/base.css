@@ -50,6 +50,26 @@ body:not(.wp-admin):has(.hero-video, .page-hero, .quote-section, .leistung-secti
   margin-inline: auto;
 }
 
+/* Shared vertical inset for standard pages and the missing-page template. */
+.page-spacing {
+  padding-block: var(--padding-3xl);
+}
+
+/* Full-width sections and the services grid already supply their own inset. */
+.page-content.page-spacing:has(> :is(.alignfull, .hero-video, .leistung-grid):first-child) {
+  padding-block-start: 0;
+}
+
+.page-content.page-spacing:has(> :is(.alignfull, .hero-video, .leistung-grid):last-child) {
+  padding-block-end: 0;
+}
+
+@media (max-width: 768px) {
+  .page-spacing {
+    padding-block: var(--padding-2xl);
+  }
+}
+
 @media (max-width: 960px) {
   .content-wrapper {
     width: calc(100% - 2 * var(--page-padding-mobile));

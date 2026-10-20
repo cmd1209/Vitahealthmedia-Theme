@@ -8,7 +8,7 @@
 get_header();
 ?>
 
-<main id="main-content" class="error-page" aria-labelledby="error-page-title">
+<main id="main-content" class="error-page page-spacing" aria-labelledby="error-page-title">
   <div class="content-wrapper">
     <div class="error-page__content">
       <p class="eyebrow error-page__eyebrow"><?php esc_html_e('404 / SEITE NICHT GEFUNDEN', 'vitahealthmedia'); ?></p>

@@ -1,5 +1,4 @@
 .error-page {
-  padding-block: var(--padding-3xl);
   background: var(--color-background-default);
 }
 
@@ -24,10 +23,6 @@
 }
 
 @media (max-width: 768px) {
-  .error-page {
-    padding-block: var(--padding-2xl);
-  }
-
   .error-page__title {
     font-size: var(--font-size-4xl);
     line-height: var(--line-height-4xl);
