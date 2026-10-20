@@ -75,6 +75,15 @@ add_action('after_setup_theme', 'vita_health_theme_setup');
 function vita_health_enqueue_assets() {
     $theme_version = wp_get_theme()->get('Version');
 
+    if (is_404()) {
+        wp_enqueue_style(
+            'vita-health-error-page',
+            get_template_directory_uri() . '/assets/css/components/error-page.css',
+            ['vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
+            filemtime(get_template_directory() . '/assets/css/components/error-page.css')
+        );
+    }
+
     wp_enqueue_style(
         'vita-health-colors',
         get_template_directory_uri() . '/assets/css/color.css',
