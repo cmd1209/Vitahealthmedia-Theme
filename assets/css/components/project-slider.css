@@ -121,7 +121,7 @@
 .project-slider__archive-link {
   display: flex;
   justify-content: center;
-  margin-block-start: var(--gap-xl);
+  margin-block-start: var(--gap-xs);
 }
 
 .project-slider__controls button {
