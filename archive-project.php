@@ -37,10 +37,10 @@ $selected_category = vita_health_selected_project_category_slug();
       ?>
         <nav class="project-archive__pagination" aria-label="<?php esc_attr_e('Projektseiten', 'vitahealthmedia'); ?>">
           <?php if ($current_page > 1) : ?>
-            <a class="button button--primary" href="<?php echo esc_url($page_url($current_page - 1)); ?>"><span class="button__icon" aria-hidden="true"><i data-lucide="chevron-left"></i></span>Neuere Beiträge</a>
+            <a class="button button--primary" href="<?php echo esc_url($page_url($current_page - 1)); ?>"><span class="button__icon" aria-hidden="true"><i data-lucide="chevron-left"></i></span>Neuere Projekte</a>
           <?php endif; ?>
           <?php if ($current_page < $total_pages) : ?>
-            <a class="button button--primary" href="<?php echo esc_url($page_url($current_page + 1)); ?>">Ältere Beiträge laden<span class="button__icon" aria-hidden="true"><i data-lucide="chevron-right"></i></span></a>
+            <a class="button button--primary" href="<?php echo esc_url($page_url($current_page + 1)); ?>">Ältere Projekte laden<span class="button__icon" aria-hidden="true"><i data-lucide="chevron-right"></i></span></a>
           <?php endif; ?>
         </nav>
       <?php endif; ?>
