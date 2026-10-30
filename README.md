@@ -86,6 +86,59 @@ Check. The choice is saved in `vitaIconName` and used by both the editor preview
 and frontend. To extend the list, add a valid Lucide name to the dropdown options
 in `assets/js/editor/button-controls.js`.
 
+## Block widths
+
+Select a content block and open **Width** in its toolbar. The choices reuse the
+theme's content tokens: **Fill container** (100% of the parent), **Narrow**
+(720px), **Medium** (960px), **Default content** (1180px), **Wide** (1440px),
+and **Full width**. These are maximum widths and shrink on smaller screens.
+Page-level Wide and Full width can extend beyond the standard page container;
+nested blocks stay within their parent. Existing responsive page gutters apply
+to capped page-level widths.
+
+The control is available on ordinary content blocks, including Groups, Columns,
+images, videos, headings, paragraphs, and Content Slider. Structural child blocks
+such as individual Columns, Slides, list items, and navigation items retain their
+parent's layout. Raw HTML, shortcodes, and referenced patterns are excluded
+because their rendered output does not provide a reliable single wrapper.
+
+An explicit Width choice overrides component presets, native alignment widths,
+and image resizing. Use **Reset width to theme default** to return to the block's
+existing layout and native controls. Existing blocks are unchanged until a width
+is selected. The setting is stored as `vitaWidth` in block attributes; rendering
+adds `data-vita-width` to the existing wrapper without changing saved block HTML.
+The editor uses the same attribute and tokens for its preview.
+
+## Content Slider
+
+Insert **Content Slider** in the block editor. It starts with three editable
+**Slide** blocks. Add native Image, Video, Heading, Paragraph, Buttons, Group, or
+other blocks inside each slide. Use List View to select, duplicate, reorder, or
+remove slides, and the slider's inserter to add more. All slides remain visible
+in the editor so their content can be edited directly.
+
+Select the parent Content Slider and set **Visible slides** to 1, 2, or 3 in
+**Slider settings**. This controls desktop sizing; tablets show up to two and
+phones show one. The number of slides in the slider is independent of this
+setting. Set an accessible label describing the content, especially when a page
+contains several sliders. Full and wide alignment are supported. Individual
+slides offer native background/text colors and padding controls.
+
+The frontend reuses `assets/js/project-slider.js`, the project slider CSS, and
+the existing Lucide arrows. It supports touch scrolling, arrow buttons, and
+Left/Right/Home/End keys when the viewport has focus. Controls disappear when
+all slides fit. Scrolling respects reduced-motion preferences. There is no
+automatic advance; videos use the native Video block's playback settings.
+
+`blocks/content-slider` renders the outer slider and navigation in PHP, while
+`blocks/content-slide` saves native inner-block content. No page builder,
+additional library, or JavaScript build step is required.
+
+Before release, save and reopen a draft containing images, videos, text, and
+buttons, and check all three visible-slide settings on desktop, tablet, and
+phone. Check adding, duplicating, reordering, and deleting slides; multiple
+sliders on a page; and an existing Projects Slider alongside the new block.
+
 ## Hero Video
 
 Insert **Hero Video** (`vita-health/hero-video`) in the page editor. Edit the

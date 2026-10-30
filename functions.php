@@ -9,6 +9,7 @@ require_once get_template_directory() . '/inc/patterns.php';
 require_once get_template_directory() . '/inc/page-hero.php';
 require_once get_template_directory() . '/inc/typography.php';
 require_once get_template_directory() . '/inc/media.php';
+require_once get_template_directory() . '/inc/block-widths.php';
 require_once get_template_directory() . '/inc/favicons.php';
 require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/team.php';
@@ -17,6 +18,7 @@ require_once get_template_directory() . '/inc/service-pages.php';
 require_once get_template_directory() . '/inc/gradients.php';
 require_once get_template_directory() . '/inc/project-cta.php';
 require_once get_template_directory() . '/inc/project-slider.php';
+require_once get_template_directory() . '/inc/content-slider.php';
 
 function vita_health_register_menus() {
     register_nav_menu('primary', __('Primary Navigation', 'vitahealthmedia'));

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/content-slide",
+  "title": "Slide",
+  "category": "design",
+  "icon": "welcome-add-page",
+  "description": "Add any blocks to this slide.",
+  "textdomain": "vitahealthmedia",
+  "parent": ["vita-health/content-slider"],
+  "supports": {
+    "html": false,
+    "color": { "background": true, "text": true },
+    "spacing": { "padding": true },
+    "layout": { "default": { "type": "default" } }
+  },
+  "editorScript": "vita-health-content-slider-editor",
+  "style": "vita-health-content-slider"
+}

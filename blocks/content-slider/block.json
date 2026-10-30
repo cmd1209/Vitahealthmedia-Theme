@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "vita-health/content-slider",
+  "title": "Content Slider",
+  "category": "design",
+  "icon": "slides",
+  "description": "A slider for images, videos, text, and other blocks, showing one to three slides at a time.",
+  "textdomain": "vitahealthmedia",
+  "attributes": {
+    "visibleSlides": { "type": "number", "default": 3 },
+    "label": { "type": "string", "default": "Content slider" },
+    "align": { "type": "string", "default": "full" }
+  },
+  "supports": { "html": false, "align": ["wide", "full"] },
+  "editorScript": "vita-health-content-slider-editor",
+  "style": "vita-health-content-slider",
+  "render": "file:./render.php"
+}

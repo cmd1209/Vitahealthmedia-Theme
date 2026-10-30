@@ -1,11 +1,12 @@
 (function () {
   document.querySelectorAll('.project-slider').forEach(function (section) {
-    const viewport = section.querySelector('.project-slider__viewport');
-    const cards = Array.from(section.querySelectorAll('.project-card'));
-    const controls = section.querySelector('.project-slider__controls');
-    const previous = section.querySelector('.project-slider__previous');
-    const next = section.querySelector('.project-slider__next');
-    if (!viewport || !cards.length || !controls) return;
+    const viewport = section.querySelector(':scope > .project-slider__viewport');
+    const track = viewport && viewport.querySelector(':scope > .project-slider__track');
+    const cards = track ? Array.from(track.children) : [];
+    const controls = section.querySelector(':scope > .project-slider__controls');
+    const previous = controls && controls.querySelector('.project-slider__previous');
+    const next = controls && controls.querySelector('.project-slider__next');
+    if (!viewport || !cards.length || !previous || !next) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function update() {
@@ -40,7 +41,9 @@
       }
     });
     viewport.addEventListener('scroll', update, { passive: true });
-    new ResizeObserver(update).observe(viewport);
+    const observer = new ResizeObserver(update);
+    observer.observe(viewport);
+    cards.forEach(function (card) { observer.observe(card); });
     update();
   });
 })();

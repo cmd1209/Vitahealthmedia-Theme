@@ -1,0 +1,89 @@
+:root {
+  --vita-width-gutter: var(--page-padding-desktop);
+}
+
+@media (max-width: 960px) {
+  :root {
+    --vita-width-gutter: var(--page-padding-mobile);
+  }
+}
+
+body:not(.wp-admin):has(main [data-vita-width="full"], main [data-vita-width="wide"]) {
+  overflow-x: clip;
+}
+
+/* Explicit width choices override component presets and native inline sizing.
+   Nested blocks always stay inside their parent, including Full width. */
+[data-vita-width] {
+  --vita-block-width: 100%;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: min(100%, var(--vita-block-width)) !important;
+  margin-inline: auto !important;
+  float: none !important;
+}
+
+[data-vita-width="narrow"] {
+  --vita-block-width: var(--content-narrow);
+}
+
+[data-vita-width="medium"] {
+  --vita-block-width: var(--content-medium);
+}
+
+[data-vita-width="content"] {
+  --vita-block-width: var(--content-default);
+}
+
+[data-vita-width="wide"] {
+  --vita-block-width: var(--content-wide);
+}
+
+/* Only page-level Wide and Full choices can extend beyond the content wrapper. */
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow)
+  > [data-vita-width="wide"] {
+  width: min(var(--content-wide), calc(100vw - 2 * var(--vita-width-gutter))) !important;
+  max-width: none !important;
+  margin-inline: calc((100% - min(var(--content-wide), calc(100vw - 2 * var(--vita-width-gutter)))) / 2) !important;
+}
+
+:is(.page-content, .project-page__content, .project-archive__extra, .content-flow)
+  > [data-vita-width="full"] {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-inline: calc(50% - 50vw) !important;
+}
+
+/* A selected width sizes the image itself as well as its figure/link wrapper. */
+.wp-block-image[data-vita-width] > a {
+  display: block;
+  width: 100%;
+}
+
+.wp-block-image[data-vita-width] img {
+  width: 100%;
+  height: auto;
+}
+
+/* The editor canvas represents the page viewport. Remove alignment wrappers'
+   extra constraints only for blocks with an explicit width choice. */
+.editor-styles-wrapper .wp-align-wrapper:has(> [data-vita-width]) {
+  display: contents;
+}
+
+.editor-styles-wrapper .is-root-container > [data-vita-width],
+.editor-styles-wrapper .is-root-container > .wp-align-wrapper > [data-vita-width] {
+  width: calc(100% - 2 * var(--vita-width-gutter)) !important;
+  max-width: var(--vita-block-width) !important;
+}
+
+.editor-styles-wrapper .is-root-container > [data-vita-width="fill"],
+.editor-styles-wrapper .is-root-container > .wp-align-wrapper > [data-vita-width="fill"] {
+  max-width: var(--content-default) !important;
+}
+
+.editor-styles-wrapper .is-root-container > [data-vita-width="full"],
+.editor-styles-wrapper .is-root-container > .wp-align-wrapper > [data-vita-width="full"] {
+  width: 100% !important;
+  max-width: none !important;
+}

@@ -1,19 +1,25 @@
 <?php
 
-function vita_health_project_slider_assets() {
-    wp_enqueue_style(
+function vita_health_register_project_slider_assets() {
+    wp_register_style(
         'vita-health-project-slider',
         get_template_directory_uri() . '/assets/css/components/project-slider.css',
         ['vita-health-base', 'vita-health-typography', 'vita-health-buttons', 'vita-health-colors'],
         filemtime(get_template_directory() . '/assets/css/components/project-slider.css')
     );
-    wp_enqueue_script(
+    wp_register_script(
         'vita-health-project-slider',
         get_template_directory_uri() . '/assets/js/project-slider.js',
         ['vita-health-icons'],
         filemtime(get_template_directory() . '/assets/js/project-slider.js'),
         true
     );
+}
+add_action('init', 'vita_health_register_project_slider_assets');
+
+function vita_health_project_slider_assets() {
+    wp_enqueue_style('vita-health-project-slider');
+    wp_enqueue_script('vita-health-project-slider');
 }
 add_action('wp_enqueue_scripts', 'vita_health_project_slider_assets', 20);
 
@@ -169,9 +175,7 @@ add_action('enqueue_block_editor_assets', 'vita_health_project_slider_editor_dat
 
 function vita_health_project_slider_editor_styles() {
     if (is_admin()) {
-        wp_enqueue_style('vita-health-project-slider', get_template_directory_uri() . '/assets/css/components/project-slider.css',
-            ['vita-health-base', 'vita-health-typography', 'vita-health-buttons'],
-            filemtime(get_template_directory() . '/assets/css/components/project-slider.css'));
+        wp_enqueue_style('vita-health-project-slider');
     }
 }
 add_action('enqueue_block_assets', 'vita_health_project_slider_editor_styles');
