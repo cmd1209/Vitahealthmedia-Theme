@@ -92,6 +92,12 @@ Select a content block and open **Width** in its toolbar. The choices reuse the
 theme's content tokens: **Fill container** (100% of the parent), **Narrow**
 (720px), **Medium** (960px), **Default content** (1180px), **Wide** (1440px),
 and **Full width**. These are maximum widths and shrink on smaller screens.
+For Narrow, Medium, and Default content widths, the same menu also offers
+**Place block left**, **Place block center**, and **Place block right**. These
+position the block within its container using automatic inline margins; text
+alignment remains controlled by WordPress's text-alignment toolbar. Center is
+the default. Placement controls are disabled for Fill container, Wide, and Full
+width; selecting one of those widths clears placement. Reset clears both settings.
 Page-level Wide and Full width can extend beyond the standard page container;
 nested blocks stay within their parent. Existing responsive page gutters apply
 to capped page-level widths.

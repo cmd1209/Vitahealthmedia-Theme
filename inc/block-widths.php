@@ -15,6 +15,10 @@ function vita_health_block_width_attribute($args, $name) {
         'type' => 'string',
         'enum' => ['fill', 'narrow', 'medium', 'content', 'wide', 'full'],
     ];
+    $args['attributes']['vitaPlacement'] = [
+        'type' => 'string',
+        'enum' => ['left', 'center', 'right'],
+    ];
     return $args;
 }
 add_filter('register_block_type_args', 'vita_health_block_width_attribute', 20, 2);
@@ -34,6 +38,10 @@ function vita_health_render_block_width($content, $block) {
         return $content;
     }
     $html->set_attribute('data-vita-width', $width);
+    $placement = $block['attrs']['vitaPlacement'] ?? '';
+    if (in_array($placement, ['left', 'center', 'right'], true)) {
+        $html->set_attribute('data-vita-placement', $placement);
+    }
     return $html->get_updated_html();
 }
 add_filter('render_block', 'vita_health_render_block_width', 30, 2);

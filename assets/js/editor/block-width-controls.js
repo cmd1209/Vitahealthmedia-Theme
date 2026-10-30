@@ -11,6 +11,11 @@
     { value: 'wide', title: __('Wide — 1440px', 'vitahealthmedia') },
     { value: 'full', title: __('Full width', 'vitahealthmedia') }
   ];
+  const placements = [
+    { value: 'left', title: __('Place block left', 'vitahealthmedia') },
+    { value: 'center', title: __('Place block center', 'vitahealthmedia') },
+    { value: 'right', title: __('Place block right', 'vitahealthmedia') }
+  ];
 
   function supportsWidth(name) {
     const type = wp.blocks.getBlockType(name);
@@ -18,27 +23,44 @@
   }
 
   function WidthControl({ attributes, setAttributes }) {
-    const controls = widths.map(function (width) {
+    const canPlace = ['narrow', 'medium', 'content'].includes(attributes.vitaWidth);
+    const widthControls = widths.map(function (width) {
       return {
         title: width.title,
         icon: attributes.vitaWidth === width.value ? 'yes' : undefined,
         isActive: attributes.vitaWidth === width.value,
         role: 'menuitemradio',
-        onClick: function () { setAttributes({ vitaWidth: width.value }); }
+        onClick: function () {
+          setAttributes({
+            vitaWidth: width.value,
+            vitaPlacement: ['narrow', 'medium', 'content'].includes(width.value) ? attributes.vitaPlacement : undefined
+          });
+        }
       };
     });
-    controls.push({
+    const placementControls = placements.map(function (placement) {
+      const active = canPlace && (attributes.vitaPlacement || 'center') === placement.value;
+      return {
+        title: placement.title,
+        icon: active ? 'yes' : undefined,
+        isActive: active,
+        isDisabled: !canPlace,
+        role: 'menuitemradio',
+        onClick: function () { setAttributes({ vitaPlacement: placement.value }); }
+      };
+    });
+    const resetControl = {
       title: __('Reset width to theme default', 'vitahealthmedia'),
       icon: !attributes.vitaWidth ? 'yes' : undefined,
-      onClick: function () { setAttributes({ vitaWidth: undefined }); }
-    });
+      onClick: function () { setAttributes({ vitaWidth: undefined, vitaPlacement: undefined }); }
+    };
 
     return el(BlockControls, { group: 'block' },
       el(ToolbarDropdownMenu, {
         icon: 'align-wide',
         label: __('Width', 'vitahealthmedia'),
         text: __('Width', 'vitahealthmedia'),
-        controls: controls
+        controls: [widthControls, placementControls, [resetControl]]
       })
     );
   }
@@ -59,7 +81,8 @@
       if (!supportsWidth(props.name)) return el(BlockListBlock, props);
       return el(BlockListBlock, Object.assign({}, props, {
         wrapperProps: Object.assign({}, props.wrapperProps, {
-          'data-vita-width': props.attributes.vitaWidth || undefined
+          'data-vita-width': props.attributes.vitaWidth || undefined,
+          'data-vita-placement': props.attributes.vitaWidth ? props.attributes.vitaPlacement : undefined
         })
       }));
     };

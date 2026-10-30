@@ -17,10 +17,11 @@
     }
 
     function move(direction) {
-      const width = cards[0].getBoundingClientRect().width;
-      const index = Math.round(viewport.scrollLeft / width) + direction;
+      const gap = parseFloat(window.getComputedStyle(track).columnGap) || 0;
+      const step = cards[0].getBoundingClientRect().width + gap;
+      const index = Math.round(viewport.scrollLeft / step) + direction;
       viewport.scrollTo({
-        left: Math.max(0, Math.min(index * width, viewport.scrollWidth - viewport.clientWidth)),
+        left: Math.max(0, Math.min(index * step, viewport.scrollWidth - viewport.clientWidth)),
         behavior: reducedMotion.matches ? 'instant' : 'smooth'
       });
     }
