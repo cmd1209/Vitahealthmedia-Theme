@@ -22,12 +22,14 @@ $category_label = !is_wp_error($categories) && $categories ? implode(', ', wp_li
     <div class="project-card__overlay" aria-hidden="true"></div>
     <div class="project-card__content">
       <?php if ($category_label) : ?>
-        <p class="project-card__category label"><?php echo esc_html($category_label); ?></p>
+        <p class="project-card__category"><?php echo esc_html($category_label); ?></p>
       <?php endif; ?>
-      <<?php echo $heading_tag; ?> class="project-card__title" id="<?php echo esc_attr($title_id); ?>"><?php the_title(); ?></<?php echo $heading_tag; ?>>
-      <?php if ($excerpt) : ?>
-        <p class="project-card__excerpt"><?php echo esc_html(wp_strip_all_tags($excerpt)); ?></p>
-      <?php endif; ?>
+      <div class="project-card__heading">
+        <<?php echo $heading_tag; ?> class="project-card__title" id="<?php echo esc_attr($title_id); ?>"><?php the_title(); ?></<?php echo $heading_tag; ?>>
+        <?php if ($excerpt) : ?>
+          <p class="project-card__excerpt"><?php echo esc_html(wp_strip_all_tags($excerpt)); ?></p>
+        <?php endif; ?>
+      </div>
       <span class="button button--<?php echo esc_attr($variant); ?> <?php echo esc_attr($button_size); ?>">
         <?php esc_html_e('Projekt ansehen', 'vitahealthmedia'); ?>
         <span class="button__icon" aria-hidden="true"><i data-lucide="chevron-right"></i></span>
